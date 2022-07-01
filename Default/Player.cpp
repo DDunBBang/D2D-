@@ -107,7 +107,7 @@ void CPlayer::Render(HDC hDC)
 void CPlayer::Release(void)
 {	
 }
-
+// hey you yea you
 void CPlayer::Key_Input(void)
 {
 	if (GetAsyncKeyState(VK_RIGHT))
