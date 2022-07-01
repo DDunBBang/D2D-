@@ -18,7 +18,7 @@ void CPlayer::Initialize(void)
 
 	m_fSpeed = 10.f;
 	m_fAngle = 3.f;
-
+	// ¡÷ºÆ
 	m_vPosin.x = m_tInfo.vPos.x;
 	m_vPosin.y = m_tInfo.vPos.y - 100.f;
 	m_vPosin.z = 0.f;
