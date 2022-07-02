@@ -18,8 +18,6 @@ CStage::~CStage()
 void CStage::Initialize(void)
 {
 	CObjMgr::Get_Instance()->Add_Object(OBJ_PLAYER, CAbstractFactory<CPlayer>::Create());
-	CObjMgr::Get_Instance()->
-	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CMonster>::Create());
 
 }
 
