@@ -4,6 +4,7 @@
 #include "BmpMgr.h"
 #include "SceneMgr.h"
 #include "ObjMgr.h"
+#include "LineMgr.h"
 
 CMainGame::CMainGame() : m_dwTime(GetTickCount()), m_iFPS(0)
 {
@@ -20,11 +21,17 @@ void CMainGame::Initialize(void)
 	m_hDC = GetDC(g_hWnd);
 	CBmpMgr::Get_Instance()->Insert_Bmp(L"../Image/Back.bmp", L"Back");
 	CSceneMgr::Get_Instance()->Scene_Change(SC_STAGE);
+	CLineMgr::Get_Instance()->Initialize();
+
+
 }
 
 void CMainGame::Update(void)
 {
+
 	CSceneMgr::Get_Instance()->Update();
+	CLineMgr::Get_Instance()->Update();
+
 }
 
 void CMainGame::Render(void)
@@ -44,11 +51,17 @@ void CMainGame::Render(void)
 
 	CSceneMgr::Get_Instance()->Render(hBackDC);
 	BitBlt(m_hDC, 0, 0, WINCX, WINCY, hBackDC, 0, 0, SRCCOPY);
+
+	CLineMgr::Get_Instance()->Render(m_hDC);
+
+
 }
 
 void CMainGame::Release(void)
 {
 	CObjMgr::Get_Instance()->Destroy_Instance();
 	CSceneMgr::Get_Instance()->Destroy_Instance();
+	CLineMgr::Get_Instance()->Destroy_Instance();
+
 	ReleaseDC(g_hWnd, m_hDC);
 }

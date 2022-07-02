@@ -1,5 +1,8 @@
 #include "stdafx.h"
 #include "Player.h"
+#include "ObjMgr.h"
+#include "AbstractFactory.h"
+#include "Bullet.h"
 
 CPlayer::CPlayer()
 {
@@ -20,13 +23,13 @@ void CPlayer::Initialize(void)
 	m_fAngle = 3.f;
 
 	m_vPosin.x = m_tInfo.vPos.x;
-	m_vPosin.y = m_tInfo.vPos.y - 100.f;
+	m_vPosin.y = m_tInfo.vPos.y - 20.f;
 	m_vPosin.z = 0.f;
 
-	m_vPoint[0] = { m_tInfo.vPos.x - 50.f , m_tInfo.vPos.y - 50.f, 0.f };
-	m_vPoint[1] = { m_tInfo.vPos.x + 50.f , m_tInfo.vPos.y - 50.f, 0.f };
-	m_vPoint[2] = { m_tInfo.vPos.x + 50.f , m_tInfo.vPos.y + 50.f, 0.f };
-	m_vPoint[3] = { m_tInfo.vPos.x - 50.f , m_tInfo.vPos.y + 50.f, 0.f };
+	m_vPoint[0] = { m_tInfo.vPos.x - 10.f , m_tInfo.vPos.y - 10.f, 0.f };
+	m_vPoint[1] = { m_tInfo.vPos.x + 10.f , m_tInfo.vPos.y - 10.f, 0.f };
+	m_vPoint[2] = { m_tInfo.vPos.x + 10.f , m_tInfo.vPos.y + 10.f, 0.f };
+	m_vPoint[3] = { m_tInfo.vPos.x - 10.f , m_tInfo.vPos.y + 10.f, 0.f };
 
 	m_vFront = { m_tInfo.vPos.x, m_tInfo.vPos.y - 50.f, 0.f };
 }
@@ -60,14 +63,14 @@ int CPlayer::Update(void)
 
 #pragma region DIRECT 함수를 이용한 과제 풀이
 
-	// 벡터의 크기를 구해주는 함수
-	// float	fLength = D3DXVec3Length(&m_tInfo.vDir);
+	//// 벡터의 크기를 구해주는 함수
+	//float	fLength = D3DXVec3Length(&m_tInfo.vDir);
 
-	// 벡터의 정규화(단위 벡터)를 수행하는 함수(결과 값을 저장할 벡터, 정규화를 수행할 벡터)
-	/*D3DXVec3Normalize(&m_tInfo.vDir, &m_tInfo.vDir);
-	D3DXVec3Normalize(&m_tInfo.vLook, &m_tInfo.vLook);*/
+	//// 벡터의 정규화(단위 벡터)를 수행하는 함수(결과 값을 저장할 벡터, 정규화를 수행할 벡터)
+	//D3DXVec3Normalize(&m_tInfo.vDir, &m_tInfo.vDir);
+	//D3DXVec3Normalize(&m_tInfo.vLook, &m_tInfo.vLook);
 
-	// 두 방향 벡터의 내적을 수행하는 함수
+	//// 두 방향 벡터의 내적을 수행하는 함수
 	//float fDot = D3DXVec3Dot(&m_tInfo.vDir, &m_tInfo.vLook);
 
 	//float	fAngle = acosf(fDot);
@@ -189,5 +192,11 @@ void CPlayer::Key_Input(void)
 		{
 			i -= vDir*m_fSpeed;
 		}
+	}
+	if (GetAsyncKeyState(VK_SPACE))
+	{
+		CObjMgr::Get_Instance()->Add_Object(OBJ_BULLET, CAbstractFactory<CBullet>::Create(m_vPosin.x, m_vPosin.y));
+
+
 	}
 }
