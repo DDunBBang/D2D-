@@ -26,14 +26,16 @@ void CPlayer::Initialize(void)
 	m_vPosin.y = m_tInfo.vPos.y - 20.f;
 	m_vPosin.z = 0.f;
 
-	m_vPoint[0] = { m_tInfo.vPos.x - 50.f , m_tInfo.vPos.y - 50.f, 0.f };
-	m_vPoint[1] = { m_tInfo.vPos.x + 50.f , m_tInfo.vPos.y - 50.f, 0.f };
-	m_vPoint[2] = { m_tInfo.vPos.x + 50.f , m_tInfo.vPos.y + 50.f, 0.f };
-	m_vPoint[3] = { m_tInfo.vPos.x - 50.f , m_tInfo.vPos.y + 50.f, 0.f };
+	m_vPoint[0] = { m_tInfo.vPos.x - 10.f , m_tInfo.vPos.y - 10.f, 0.f };
+	m_vPoint[1] = { m_tInfo.vPos.x + 10.f , m_tInfo.vPos.y - 10.f, 0.f };
+	m_vPoint[2] = { m_tInfo.vPos.x + 10.f , m_tInfo.vPos.y + 10.f, 0.f };
+	m_vPoint[3] = { m_tInfo.vPos.x - 10.f , m_tInfo.vPos.y + 10.f, 0.f };
 	
 	for (int i = 0; i < 4; ++i)
 		m_vOriginPoint[i] = m_vPoint[i];
 	m_vFront = { m_tInfo.vPos.x, m_tInfo.vPos.y - 50.f, 0.f };
+
+	
 }
 
 int CPlayer::Update(void)

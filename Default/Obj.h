@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Include.h"
+#include "Line.h"
 
 class CObj
 {
@@ -20,6 +21,8 @@ public:
 
 	const INFO&		Get_Info(void)const { return m_tInfo; }
 
+	void		Create_Line();
+
 public:
 	virtual		void	Initialize(void)	PURE;
 	virtual		int		Update(void)		PURE;
@@ -30,8 +33,15 @@ public:
 protected:
 	INFO		m_tInfo;
 
+	LINEPOINT	m_tLinePoint[DIR_END][DIR_END];
+
+	D3DXVECTOR3		m_vPoint[4];
+	D3DXVECTOR3		m_vOriginPoint[4];
+
 	bool		m_bDead;
 
 	float		m_fSpeed;
+
+	list<CLine*>		m_LineList;
 };
 

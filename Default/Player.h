@@ -23,8 +23,7 @@ private:
 
 private:
 	D3DXVECTOR3		m_vPosin;
-	D3DXVECTOR3		m_vPoint[4];
-	D3DXVECTOR3		m_vOriginPoint[4];
+	
 	D3DXVECTOR3		m_vFront;
 
 	float			m_fAngle;
