@@ -11,6 +11,7 @@ private:
 
 public:
 	CObj*		Get_Player() { return m_ObjList[OBJ_PLAYER].front(); }
+	CObj*		Get_Moster() { return m_ObjList[OBJ_MONSTER].front(); }
 
 public:
 	void		Add_Object(OBJID eID, CObj* pObj);

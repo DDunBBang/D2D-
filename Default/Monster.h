@@ -8,7 +8,7 @@ public:
 	virtual ~CMonster();
 
 public:
-	void		Set_Player(CObj* pPlayer) { m_pPlayer = pPlayer; }
+	//void		Set_Player(CObj* pPlayer) { m_pPlayer = pPlayer; }
 
 public:
 	virtual void Initialize(void) override;
@@ -18,7 +18,7 @@ public:
 	virtual void Release(void) override;
 
 private:
-	CObj*			m_pPlayer = nullptr;
+	//CObj*			m_pPlayer = nullptr;
 
 };
 

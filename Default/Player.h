@@ -15,15 +15,19 @@ public:
 	virtual void Render(HDC hDC) override;
 	virtual void Release(void) override;
 
+public:
+	void Set_Posin(D3DXVECTOR3 _vPosin) { m_vPosin = _vPosin; }
+
 private:
 	void		Key_Input(void);
 
 private:
 	D3DXVECTOR3		m_vPosin;
 	D3DXVECTOR3		m_vPoint[4];
+	D3DXVECTOR3		m_vOriginPoint[4];
 	D3DXVECTOR3		m_vFront;
 
-	float			m_fAngle2;
+	float			m_fAngle;
 
 };
 
