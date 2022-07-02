@@ -20,7 +20,6 @@ void CStage::Initialize(void)
 {
 	CObjMgr::Get_Instance()->Add_Object(OBJ_PLAYER, CAbstractFactory<CPlayer>::Create());
 	//CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CMonster>::Create());
-	CLineMgr::Get_Instance()->Load_File();
 	CLineMgr::Get_Instance()->Initialize();
 }
 
