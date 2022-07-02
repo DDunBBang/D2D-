@@ -29,9 +29,29 @@ int CLineMgr::Update(void)
 
 	//pt.x -= (int)CScrollMgr::Get_Instance()->Get_ScrollX();
 
-	if (CKeyMgr::Get_Instance()->Key_Down(VK_LBUTTON))
+	//if (CKeyMgr::Get_Instance()->Key_Down(VK_LBUTTON))
+	//{
+	//	// 처음 마우스 피킹을 한 경우
+	//	if ((!m_tLinePoint[DIR_LEFT].fX) && (!m_tLinePoint[DIR_LEFT].fY))
+	//	{
+	//		m_tLinePoint[DIR_LEFT].fX = (float)pt.x;
+	//		m_tLinePoint[DIR_LEFT].fY = (float)pt.y;
+	//	}
+	//	// 처음 피킹한 경우가 아닐 때
+	//	else
+	//	{
+	//		m_tLinePoint[DIR_RIGHT].fX = (float)pt.x;
+	//		m_tLinePoint[DIR_RIGHT].fY = (float)pt.y;
+
+	//		m_LineList.push_back(new CLine(m_tLinePoint[DIR_LEFT], m_tLinePoint[DIR_RIGHT]));
+
+	//		m_tLinePoint[DIR_LEFT].fX = m_tLinePoint[DIR_RIGHT].fX;
+	//		m_tLinePoint[DIR_LEFT].fY = m_tLinePoint[DIR_RIGHT].fY;
+	//	}
+	//}
+
+	if (CKeyMgr::Get_Instance()->Key_Pressing(VK_SHIFT) && CKeyMgr::Get_Instance()->Key_Down(VK_LBUTTON))
 	{
-		// 처음 마우스 피킹을 한 경우
 		if ((!m_tLinePoint[DIR_LEFT].fX) && (!m_tLinePoint[DIR_LEFT].fY))
 		{
 			m_tLinePoint[DIR_LEFT].fX = (float)pt.x;
@@ -40,36 +60,53 @@ int CLineMgr::Update(void)
 		// 처음 피킹한 경우가 아닐 때
 		else
 		{
-			m_tLinePoint[DIR_RIGHT].fX = (float)pt.x;
-			m_tLinePoint[DIR_RIGHT].fY = (float)pt.y;
+			if (m_tLinePoint[DIR_LEFT].fX + 10.f > (float)pt.x && m_tLinePoint[DIR_LEFT].fX - 10.f < (float)pt.x) {
+				m_tLinePoint[DIR_RIGHT].fX = m_tLinePoint[DIR_RIGHT].fX;
+				m_tLinePoint[DIR_RIGHT].fY = (float)pt.y;
 
-			m_LineList.push_back(new CLine(m_tLinePoint[DIR_LEFT], m_tLinePoint[DIR_RIGHT]));
+				m_LineList.push_back(new CLine(m_tLinePoint[DIR_LEFT], m_tLinePoint[DIR_RIGHT]));
 
-			m_tLinePoint[DIR_LEFT].fX = m_tLinePoint[DIR_RIGHT].fX;
-			m_tLinePoint[DIR_LEFT].fY = m_tLinePoint[DIR_RIGHT].fY;
+				m_tLinePoint[DIR_LEFT].fX = m_tLinePoint[DIR_RIGHT].fX;
+				m_tLinePoint[DIR_LEFT].fY = m_tLinePoint[DIR_RIGHT].fY;
+			}
+			else if (m_tLinePoint[DIR_LEFT].fY + 10.f > (float)pt.y && m_tLinePoint[DIR_LEFT].fY - 10.f < (float)pt.y)
+			{
+				m_tLinePoint[DIR_RIGHT].fX = (float)pt.x;
+				m_tLinePoint[DIR_RIGHT].fY = m_tLinePoint[DIR_LEFT].fY;
+
+				m_LineList.push_back(new CLine(m_tLinePoint[DIR_LEFT], m_tLinePoint[DIR_RIGHT]));
+
+				m_tLinePoint[DIR_LEFT].fX = m_tLinePoint[DIR_RIGHT].fX;
+				m_tLinePoint[DIR_LEFT].fY = m_tLinePoint[DIR_RIGHT].fY;
+			}
 		}
-	}
 
-	if (CKeyMgr::Get_Instance()->Key_Down('S'))
+
+	}
+	if (CKeyMgr::Get_Instance()->Key_Pressing(VK_CONTROL) && CKeyMgr::Get_Instance()->Key_Down('Z'))
+	{
+		m_LineList.pop_back();
+	}
+	else if (CKeyMgr::Get_Instance()->Key_Down('S'))
 	{
 		Save_File();
 		return 0;
 	}
 
-	if (CKeyMgr::Get_Instance()->Key_Down('L'))
+	else if (CKeyMgr::Get_Instance()->Key_Down('L'))
 	{
 		Load_File();
 		return 0;
 	}
 
-	if (CKeyMgr::Get_Instance()->Key_Pressing(VK_LEFT))
-		//CScrollMgr::Get_Instance()->Set_ScrollX(5.f);
+	//if (CKeyMgr::Get_Instance()->Key_Pressing(VK_LEFT))
+	//	//CScrollMgr::Get_Instance()->Set_ScrollX(5.f);
 
-	if (CKeyMgr::Get_Instance()->Key_Pressing(VK_RIGHT))
-		//CScrollMgr::Get_Instance()->Set_ScrollX(-5.f);
+	//	if (CKeyMgr::Get_Instance()->Key_Pressing(VK_RIGHT))
+	//		//CScrollMgr::Get_Instance()->Set_ScrollX(-5.f);
 
 
-	return 0;
+			return 0;
 }
 
 void CLineMgr::Late_Update(void)
