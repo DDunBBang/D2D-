@@ -45,7 +45,14 @@ int CLineMgr::Update(void)
 				m_tLinePoint[DIR_RIGHT].fX = m_tLinePoint[DIR_RIGHT].fX;
 				m_tLinePoint[DIR_RIGHT].fY = (float)pt.y;
 
-				m_LineList.push_back(new CLine(m_tLinePoint[DIR_LEFT], m_tLinePoint[DIR_RIGHT]));
+				if (m_tLinePoint[DIR_RIGHT].fX < m_tLinePoint[DIR_LEFT].fX)
+					m_LineList.push_back(new CLine(m_tLinePoint[DIR_RIGHT], m_tLinePoint[DIR_LEFT]));
+				else if (m_tLinePoint[DIR_RIGHT].fX > m_tLinePoint[DIR_LEFT].fX)
+					m_LineList.push_back(new CLine(m_tLinePoint[DIR_LEFT], m_tLinePoint[DIR_RIGHT]));
+				else if (m_tLinePoint[DIR_RIGHT].fY > m_tLinePoint[DIR_LEFT].fY)
+					m_LineList.push_back(new CLine(m_tLinePoint[DIR_LEFT], m_tLinePoint[DIR_RIGHT]));
+				else if (m_tLinePoint[DIR_RIGHT].fY < m_tLinePoint[DIR_LEFT].fY)
+					m_LineList.push_back(new CLine(m_tLinePoint[DIR_RIGHT], m_tLinePoint[DIR_LEFT]));
 
 				m_tLinePoint[DIR_LEFT].fX = m_tLinePoint[DIR_RIGHT].fX;
 				m_tLinePoint[DIR_LEFT].fY = m_tLinePoint[DIR_RIGHT].fY;
@@ -55,7 +62,14 @@ int CLineMgr::Update(void)
 				m_tLinePoint[DIR_RIGHT].fX = (float)pt.x;
 				m_tLinePoint[DIR_RIGHT].fY = m_tLinePoint[DIR_LEFT].fY;
 
-				m_LineList.push_back(new CLine(m_tLinePoint[DIR_LEFT], m_tLinePoint[DIR_RIGHT]));
+				if (m_tLinePoint[DIR_RIGHT].fX < m_tLinePoint[DIR_LEFT].fX)
+					m_LineList.push_back(new CLine(m_tLinePoint[DIR_RIGHT], m_tLinePoint[DIR_LEFT]));
+				else if (m_tLinePoint[DIR_RIGHT].fX > m_tLinePoint[DIR_LEFT].fX)
+					m_LineList.push_back(new CLine(m_tLinePoint[DIR_LEFT], m_tLinePoint[DIR_RIGHT]));
+				else if (m_tLinePoint[DIR_RIGHT].fY > m_tLinePoint[DIR_LEFT].fY)
+					m_LineList.push_back(new CLine(m_tLinePoint[DIR_LEFT], m_tLinePoint[DIR_RIGHT]));
+				else if (m_tLinePoint[DIR_RIGHT].fY < m_tLinePoint[DIR_LEFT].fY)
+					m_LineList.push_back(new CLine(m_tLinePoint[DIR_RIGHT], m_tLinePoint[DIR_LEFT]));
 
 				m_tLinePoint[DIR_LEFT].fX = m_tLinePoint[DIR_RIGHT].fX;
 				m_tLinePoint[DIR_LEFT].fY = m_tLinePoint[DIR_RIGHT].fY;
@@ -76,7 +90,14 @@ int CLineMgr::Update(void)
 			m_tLinePoint[DIR_RIGHT].fX = (float)pt.x;
 			m_tLinePoint[DIR_RIGHT].fY = (float)pt.y;
 
-			m_LineList.push_back(new CLine(m_tLinePoint[DIR_LEFT], m_tLinePoint[DIR_RIGHT]));
+			if(m_tLinePoint[DIR_RIGHT].fX < m_tLinePoint[DIR_LEFT].fX)
+				m_LineList.push_back(new CLine(m_tLinePoint[DIR_RIGHT], m_tLinePoint[DIR_LEFT]));
+			else if(m_tLinePoint[DIR_RIGHT].fX > m_tLinePoint[DIR_LEFT].fX)
+				m_LineList.push_back(new CLine(m_tLinePoint[DIR_LEFT], m_tLinePoint[DIR_RIGHT]));
+			else if(m_tLinePoint[DIR_RIGHT].fY > m_tLinePoint[DIR_LEFT].fY)
+				m_LineList.push_back(new CLine(m_tLinePoint[DIR_LEFT], m_tLinePoint[DIR_RIGHT]));
+			else if(m_tLinePoint[DIR_RIGHT].fY < m_tLinePoint[DIR_LEFT].fY)
+				m_LineList.push_back(new CLine(m_tLinePoint[DIR_RIGHT], m_tLinePoint[DIR_LEFT]));
 
 			m_tLinePoint[DIR_LEFT].fX = m_tLinePoint[DIR_RIGHT].fX;
 			m_tLinePoint[DIR_LEFT].fY = m_tLinePoint[DIR_RIGHT].fY;

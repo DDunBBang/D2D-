@@ -18,8 +18,20 @@ bool CCollisionMgr::Collision_Line(list<CObj*>* _Dest, list<CLine*>* _Sour)
 	{
 		for (auto& iter = _Sour->begin(); iter != _Sour->end(); ++iter)
 		{
-			/*D3DXVECTOR3 vLP = { Dest->Get_Info().vPos.x - (*iter)->Get_Line().tLPoint.fX, Dest->Get_Info().vPos.y - (*iter)->Get_Line().tLPoint.fY, 0.f };
-			D3DXVECTOR3 vLR = { (*iter)->Get_Line().tRPoint.fX - (*iter)->Get_Line().tLPoint.fX, (*iter)->Get_Line().tRPoint.fY - (*iter)->Get_Line().tLPoint.fY, 0.f };*/
+			if ((*iter)->Get_Line().tLPoint.fX == (*iter)->Get_Line().tRPoint.fX)
+			{
+				if (Dest->Get_Info().vPos.y + Dest->Get_Radious() < (*iter)->Get_Line().tLPoint.fY)
+					continue;
+				else if (Dest->Get_Info().vPos.y - Dest->Get_Radious() > (*iter)->Get_Line().tRPoint.fY)
+					continue;
+			}
+			else if ((*iter)->Get_Line().tLPoint.fY == (*iter)->Get_Line().tRPoint.fY)
+			{
+				if (Dest->Get_Info().vPos.x + Dest->Get_Radious() < (*iter)->Get_Line().tLPoint.fX)
+					continue;
+				else if (Dest->Get_Info().vPos.x - Dest->Get_Radious() > (*iter)->Get_Line().tRPoint.fX)
+					continue;
+			}
 
 			D3DXVECTOR3 vLeft = { (*iter)->Get_Line().tLPoint.fX, (*iter)->Get_Line().tLPoint.fY, 0.f };
 			D3DXVECTOR3 vRight = { (*iter)->Get_Line().tRPoint.fX, (*iter)->Get_Line().tRPoint.fY, 0.f };
@@ -35,7 +47,9 @@ bool CCollisionMgr::Collision_Line(list<CObj*>* _Dest, list<CLine*>* _Sour)
 			float fHeight = sinf(fRadian)*fDiagnol;
 
 			if (fHeight < Dest->Get_Radious())
+			{
 				return true;
+			}
 		}
 	}
 
