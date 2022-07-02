@@ -19,7 +19,7 @@ void CPlayer::Initialize(void)
 	m_tInfo.vPos = { 400.f, 300.f, 0.f };
 	m_tInfo.vLook = { 1.f, 0.f, 0.f };
 
-	m_fSpeed = 10.f;
+	m_fSpeed = 4.f;
 	m_fAngle = 0.f;
 
 	m_vPosin.x = m_tInfo.vPos.x;

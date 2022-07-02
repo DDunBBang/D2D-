@@ -125,38 +125,6 @@ void CLineMgr::Release(void)
 	m_LineList.clear();
 }
 
-bool CLineMgr::Collision_Line(float fX, float* pY)
-{
-	if (m_LineList.empty())
-		return false;
-
-	CLine*		pTarget = nullptr;
-
-	for (auto& iter : m_LineList)
-	{
-		if (fX >= iter->Get_Line().tLPoint.fX &&
-			fX < iter->Get_Line().tRPoint.fX)
-			pTarget = iter;
-	}
-
-	if (!pTarget)
-		return false;
-
-	// 직선의 방정식 
-	// Y - y1 = ((y2 - y1) / (x2 - x1)) * (X - x1)
-	// Y = ((y2 - y1) / (x2 - x1)) * (X - x1) + y1
-
-	float	x1 = pTarget->Get_Line().tLPoint.fX;
-	float	x2 = pTarget->Get_Line().tRPoint.fX;
-
-	float	y1 = pTarget->Get_Line().tLPoint.fY;
-	float	y2 = pTarget->Get_Line().tRPoint.fY;
-
-	*pY = ((y2 - y1) / (x2 - x1)) * (fX - x1) + y1;
-
-	return true;
-}
-
 void CLineMgr::Save_File(void)
 {
 	// 1. 파일 개방

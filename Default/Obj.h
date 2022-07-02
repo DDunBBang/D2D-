@@ -18,8 +18,8 @@ public:
 
 	void		Set_Dead(void) { m_bDead = true; }
 
-
 	const INFO&		Get_Info(void)const { return m_tInfo; }
+	const float		Get_Radious() const { return fabs(m_tInfo.vPos.y - m_vPoint[0].y); }
 
 	void		Create_Line();
 	void		Update_Line();

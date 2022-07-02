@@ -16,11 +16,10 @@ public:
 	void		Render(HDC hDC);
 	void		Release(void);
 
-	bool		Collision_Line(float fX, float* pY);
-
 	void		Save_File(void);
 	void		Load_File(void);
 
+	list<CLine*>* Get_LineList() { return &m_LineList; }
 
 public:
 	static		CLineMgr*		Get_Instance(void)

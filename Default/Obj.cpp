@@ -73,4 +73,3 @@ void CObj::Update_Line()
 	m_vecLine[2]->Set_Line(m_tLinePoint[DIR_DOWN][DIR_LEFT], m_tLinePoint[DIR_DOWN][DIR_RIGHT]);
 	m_vecLine[3]->Set_Line(m_tLinePoint[DIR_LEFT][DIR_LEFT], m_tLinePoint[DIR_LEFT][DIR_RIGHT]);
 }
-

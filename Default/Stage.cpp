@@ -6,6 +6,8 @@
 #include "Player.h"
 #include "Monster.h"
 #include "LineMgr.h"
+#include "KeyMgr.h"
+#include "CollisionMgr.h"
 
 CStage::CStage()
 {
@@ -18,6 +20,7 @@ CStage::~CStage()
 
 void CStage::Initialize(void)
 {
+	CLineMgr::Get_Instance()->Load_File();
 	CObjMgr::Get_Instance()->Add_Object(OBJ_PLAYER, CAbstractFactory<CPlayer>::Create());
 	//CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CMonster>::Create());
 	CLineMgr::Get_Instance()->Initialize();
@@ -50,7 +53,11 @@ void CStage::Render(HDC hDC)
 	DrawText(hDC, L"STAGE_S", lstrlen(L"STAGE_S"), &m_tRect[1], DT_CENTER);
 	DrawText(hDC, L"STAGE_B", lstrlen(L"STAGE_B"), &m_tRect[2], DT_CENTER);
 	DrawText(hDC, L"STAGE_J", lstrlen(L"STAGE_J"), &m_tRect[3], DT_CENTER);
-	
+
+	if (CCollisionMgr::Collision_Line(CObjMgr::Get_Instance()->Get_ObjList(OBJ_PLAYER), CLineMgr::Get_Instance()->Get_LineList()))
+	{
+		Rectangle(hDC, 100, 100, WINCX-100, WINCY-100);
+	}
 	CLineMgr::Get_Instance()->Render(hDC);
 	CObjMgr::Get_Instance()->Render(hDC);
 }

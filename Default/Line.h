@@ -22,4 +22,3 @@ public:
 private:
 	LINE		m_tInfo;
 };
-
