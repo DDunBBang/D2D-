@@ -5,6 +5,7 @@
 #include "SceneMgr.h"
 #include "ObjMgr.h"
 #include "LineMgr.h"
+#include "KeyMgr.h"
 
 CMainGame::CMainGame() : m_dwTime(GetTickCount()), m_iFPS(0)
 {
@@ -60,6 +61,8 @@ void CMainGame::Render(void)
 void CMainGame::Release(void)
 {
 	CObjMgr::Get_Instance()->Destroy_Instance();
+	CBmpMgr::Get_Instance()->Destroy_Instance();
+	CKeyMgr::Get_Instance()->Destroy_Instance();
 	CSceneMgr::Get_Instance()->Destroy_Instance();
 	CLineMgr::Get_Instance()->Destroy_Instance();
 
