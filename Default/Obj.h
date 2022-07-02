@@ -22,6 +22,7 @@ public:
 	const INFO&		Get_Info(void)const { return m_tInfo; }
 
 	void		Create_Line();
+	void		Update_Line();
 
 public:
 	virtual		void	Initialize(void)	PURE;
@@ -42,6 +43,6 @@ protected:
 
 	float		m_fSpeed;
 
-	list<CLine*>		m_LineList;
+	vector<CLine*>		m_vecLine;
 };
 

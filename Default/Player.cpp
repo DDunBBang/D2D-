@@ -35,7 +35,7 @@ void CPlayer::Initialize(void)
 		m_vOriginPoint[i] = m_vPoint[i];
 	m_vFront = { m_tInfo.vPos.x, m_tInfo.vPos.y - 50.f, 0.f };
 
-	
+	Create_Line();
 }
 
 int CPlayer::Update(void)
@@ -107,6 +107,7 @@ int CPlayer::Update(void)
 		D3DXVec3TransformCoord(&m_vPoint[i], &m_vPoint[i], &m_tInfo.matWorld);
 	}
 
+	Update_Line();
 
 	return 0;
 
@@ -128,6 +129,7 @@ void CPlayer::Render(HDC hDC)
 			continue;
 	}
 	LineTo(hDC, m_vPoint[0].x, m_vPoint[0].y);
+
 	/*for (auto& i : m_vPoint)
 	{
 		LineTo(hDC, (int)i.x, (int)i.y);
@@ -139,6 +141,10 @@ void CPlayer::Render(HDC hDC)
 
 void CPlayer::Release(void)
 {	
+	for (auto& iter : m_vecLine)
+		Safe_Delete<CLine*>(iter);
+
+	m_vecLine.clear();
 }
 
 void CPlayer::Key_Input(void)
