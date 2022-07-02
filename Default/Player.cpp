@@ -33,7 +33,6 @@ void CPlayer::Initialize(void)
 	
 	for (int i = 0; i < 4; ++i)
 		m_vOriginPoint[i] = m_vPoint[i];
-
 	m_vFront = { m_tInfo.vPos.x, m_tInfo.vPos.y - 50.f, 0.f };
 }
 
