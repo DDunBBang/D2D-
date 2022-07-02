@@ -27,28 +27,9 @@ int CLineMgr::Update(void)
 	GetCursorPos(&pt);
 	ScreenToClient(g_hWnd, &pt);
 
-	//pt.x -= (int)CScrollMgr::Get_Instance()->Get_ScrollX();
+	//.pt.x -= (int)CScrollMgr::Get_Instance()->Get_ScrollX();
 
-	//if (CKeyMgr::Get_Instance()->Key_Down(VK_LBUTTON))
-	//{
-	//	// 처음 마우스 피킹을 한 경우
-	//	if ((!m_tLinePoint[DIR_LEFT].fX) && (!m_tLinePoint[DIR_LEFT].fY))
-	//	{
-	//		m_tLinePoint[DIR_LEFT].fX = (float)pt.x;
-	//		m_tLinePoint[DIR_LEFT].fY = (float)pt.y;
-	//	}
-	//	// 처음 피킹한 경우가 아닐 때
-	//	else
-	//	{
-	//		m_tLinePoint[DIR_RIGHT].fX = (float)pt.x;
-	//		m_tLinePoint[DIR_RIGHT].fY = (float)pt.y;
 
-	//		m_LineList.push_back(new CLine(m_tLinePoint[DIR_LEFT], m_tLinePoint[DIR_RIGHT]));
-
-	//		m_tLinePoint[DIR_LEFT].fX = m_tLinePoint[DIR_RIGHT].fX;
-	//		m_tLinePoint[DIR_LEFT].fY = m_tLinePoint[DIR_RIGHT].fY;
-	//	}
-	//}
 
 	if (CKeyMgr::Get_Instance()->Key_Pressing(VK_SHIFT) && CKeyMgr::Get_Instance()->Key_Down(VK_LBUTTON))
 	{
@@ -80,8 +61,26 @@ int CLineMgr::Update(void)
 				m_tLinePoint[DIR_LEFT].fY = m_tLinePoint[DIR_RIGHT].fY;
 			}
 		}
+	}
+	else if (CKeyMgr::Get_Instance()->Key_Down(VK_LBUTTON))
+	{
+		// 처음 마우스 피킹을 한 경우
+		if ((!m_tLinePoint[DIR_LEFT].fX) && (!m_tLinePoint[DIR_LEFT].fY))
+		{
+			m_tLinePoint[DIR_LEFT].fX = (float)pt.x;
+			m_tLinePoint[DIR_LEFT].fY = (float)pt.y;
+		}
+		// 처음 피킹한 경우가 아닐 때
+		else
+		{
+			m_tLinePoint[DIR_RIGHT].fX = (float)pt.x;
+			m_tLinePoint[DIR_RIGHT].fY = (float)pt.y;
 
+			m_LineList.push_back(new CLine(m_tLinePoint[DIR_LEFT], m_tLinePoint[DIR_RIGHT]));
 
+			m_tLinePoint[DIR_LEFT].fX = m_tLinePoint[DIR_RIGHT].fX;
+			m_tLinePoint[DIR_LEFT].fY = m_tLinePoint[DIR_RIGHT].fY;
+		}
 	}
 	if (CKeyMgr::Get_Instance()->Key_Pressing(VK_CONTROL) && CKeyMgr::Get_Instance()->Key_Down('Z'))
 	{
@@ -106,7 +105,7 @@ int CLineMgr::Update(void)
 	//		//CScrollMgr::Get_Instance()->Set_ScrollX(-5.f);
 
 
-			return 0;
+	return 0;
 }
 
 void CLineMgr::Late_Update(void)
