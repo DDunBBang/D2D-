@@ -28,6 +28,18 @@ void CSceneMgr::Scene_Change(SCENEID eScene)
 		case SC_STAGE:
 			m_pScene = new CStage;
 			break;
+		case SC_STAGEL:
+			m_pScene = new CStageL;
+			break;
+		case SC_STAGEJ:
+			m_pScene = new CStageJ;
+			break;
+		case SC_STAGEB:
+			m_pScene = new CStageB;
+			break;
+		case SC_STAGES:
+			m_pScene = new CStageS;
+			break;
 		}
 
 		m_pScene->Initialize();

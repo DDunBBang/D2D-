@@ -1,6 +1,10 @@
 #pragma once
 #include "Include.h"
 #include "Stage.h"
+#include "StageL.h"
+#include "StageJ.h"
+#include "StageB.h"
+#include "StageS.h"
 
 class CSceneMgr
 {

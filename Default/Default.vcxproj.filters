@@ -67,6 +67,18 @@
     <Filter Include="98. Design\KeyMgr">
       <UniqueIdentifier>{b8188b82-5323-4644-a4b4-766690ae55b0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. Scene\StageL">
+      <UniqueIdentifier>{7c6e78c0-4f2d-470f-84ff-5ecbba9740c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Scene\StageB">
+      <UniqueIdentifier>{42884979-d089-4262-b076-552531158f1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Scene\StageJ">
+      <UniqueIdentifier>{f7d617dc-08f1-4452-ad5e-c458411bc3c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Scene\StageS">
+      <UniqueIdentifier>{7a4f9b51-afc5-4679-bf99-37207d74108f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -147,6 +159,18 @@
     <ClInclude Include="KeyMgr.h">
       <Filter>98. Design\KeyMgr</Filter>
     </ClInclude>
+    <ClInclude Include="StageS.h">
+      <Filter>02. Scene\StageS</Filter>
+    </ClInclude>
+    <ClInclude Include="StageJ.h">
+      <Filter>02. Scene\StageJ</Filter>
+    </ClInclude>
+    <ClInclude Include="StageB.h">
+      <Filter>02. Scene\StageB</Filter>
+    </ClInclude>
+    <ClInclude Include="StageL.h">
+      <Filter>02. Scene\StageL</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -199,6 +223,18 @@
     </ClCompile>
     <ClCompile Include="KeyMgr.cpp">
       <Filter>98. Design\KeyMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="StageS.cpp">
+      <Filter>02. Scene\StageS</Filter>
+    </ClCompile>
+    <ClCompile Include="StageJ.cpp">
+      <Filter>02. Scene\StageJ</Filter>
+    </ClCompile>
+    <ClCompile Include="StageB.cpp">
+      <Filter>02. Scene\StageB</Filter>
+    </ClCompile>
+    <ClCompile Include="StageL.cpp">
+      <Filter>02. Scene\StageL</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
