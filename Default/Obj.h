@@ -17,6 +17,7 @@ public:
 
 	void		Set_Dead(void) { m_bDead = true; }
 
+
 	const INFO&		Get_Info(void)const { return m_tInfo; }
 
 public:

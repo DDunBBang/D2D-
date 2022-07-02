@@ -58,6 +58,15 @@
     <Filter Include="98. Design\CollisionMgr">
       <UniqueIdentifier>{bd48b473-5280-4f15-87c1-4da425ff2b86}</UniqueIdentifier>
     </Filter>
+    <Filter Include="98. Design\LineMgr">
+      <UniqueIdentifier>{5ef244dd-719d-4bf5-8e83-71edf2b739a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="98. Design\LineMgr\Line">
+      <UniqueIdentifier>{ec48a361-c291-44d9-994c-f9dcb1a34751}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="98. Design\KeyMgr">
+      <UniqueIdentifier>{b8188b82-5323-4644-a4b4-766690ae55b0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -129,6 +138,15 @@
     <ClInclude Include="CollisionMgr.h">
       <Filter>98. Design\CollisionMgr</Filter>
     </ClInclude>
+    <ClInclude Include="Line.h">
+      <Filter>98. Design\LineMgr\Line</Filter>
+    </ClInclude>
+    <ClInclude Include="LineMgr.h">
+      <Filter>98. Design\LineMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyMgr.h">
+      <Filter>98. Design\KeyMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -172,6 +190,15 @@
     </ClCompile>
     <ClCompile Include="CollisionMgr.cpp">
       <Filter>98. Design\CollisionMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Line.cpp">
+      <Filter>98. Design\LineMgr\Line</Filter>
+    </ClCompile>
+    <ClCompile Include="LineMgr.cpp">
+      <Filter>98. Design\LineMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyMgr.cpp">
+      <Filter>98. Design\KeyMgr</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

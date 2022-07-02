@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Monster.h"
+#include "ObjMgr.h"
 
 
 CMonster::CMonster()
@@ -21,7 +22,9 @@ void CMonster::Initialize(void)
 
 int CMonster::Update(void)
 {
-	m_tInfo.vDir = m_pPlayer->Get_Info().vPos - m_tInfo.vPos;
+	
+
+	m_tInfo.vDir = CObjMgr::Get_Instance()->Get_Player()->Get_Info().vPos; - m_tInfo.vPos;
 
 	float		fLength = sqrtf(m_tInfo.vDir.x * m_tInfo.vDir.x + m_tInfo.vDir.y * m_tInfo.vDir.y);
 
@@ -29,7 +32,7 @@ int CMonster::Update(void)
 	m_tInfo.vDir.y /= fLength;
 	m_tInfo.vDir.z = 0.f;
 
-	m_tInfo.vPos += m_tInfo.vDir * m_fSpeed;
+	//m_tInfo.vPos += m_tInfo.vDir * m_fSpeed;
 
 	return 0; 
 }

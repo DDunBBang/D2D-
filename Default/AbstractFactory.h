@@ -30,7 +30,7 @@ public:
 		pInstance->Set_Pos(_fX, _fY);
 
 		if (DIR_END != eDir)
-			pInstance->Set_Dir(eDir);
+			//pInstance->Set_Dir(eDir);
 
 		return pInstance;
 	}
