@@ -8,6 +8,7 @@
 #include "LineMgr.h"
 #include "KeyMgr.h"
 #include "CollisionMgr.h"
+#include "SceneMgr.h"
 
 CStage::CStage()
 {
@@ -41,6 +42,31 @@ int CStage::Update(void)
 void CStage::Late_Update(void)
 {
 	CObjMgr::Get_Instance()->Late_Update();
+
+	for (int i = 0; i < 4; ++i)
+	{
+		if (GetAsyncKeyState(VK_RETURN))
+		{
+			if (CCollisionMgr::Collision_Menu(CObjMgr::Get_Instance()->Get_Player(), &m_tRect[i]))
+			{
+				switch (i)
+				{
+				case 0:
+					CSceneMgr::Get_Instance()->Scene_Change(SC_STAGEL);
+					break;
+				case 1:
+					CSceneMgr::Get_Instance()->Scene_Change(SC_STAGES);
+					break;
+				case 2:
+					CSceneMgr::Get_Instance()->Scene_Change(SC_STAGEB);
+					break;
+				case 3:
+					CSceneMgr::Get_Instance()->Scene_Change(SC_STAGEJ);
+					break;
+				}
+			}
+		}
+	}
 }
 
 void CStage::Render(HDC hDC)
@@ -54,10 +80,6 @@ void CStage::Render(HDC hDC)
 	DrawText(hDC, L"STAGE_B", lstrlen(L"STAGE_B"), &m_tRect[2], DT_CENTER);
 	DrawText(hDC, L"STAGE_J", lstrlen(L"STAGE_J"), &m_tRect[3], DT_CENTER);
 
-	if (CCollisionMgr::Collision_Line(CObjMgr::Get_Instance()->Get_ObjList(OBJ_PLAYER), CLineMgr::Get_Instance()->Get_LineList()))
-	{
-		Rectangle(hDC, 100, 100, WINCX-100, WINCY-100);
-	}
 	CLineMgr::Get_Instance()->Render(hDC);
 	CObjMgr::Get_Instance()->Render(hDC);
 }

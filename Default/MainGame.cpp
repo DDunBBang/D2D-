@@ -35,6 +35,12 @@ void CMainGame::Update(void)
 
 }
 
+void CMainGame::Late_Update(void)
+{
+	CSceneMgr::Get_Instance()->Late_Update();
+	CLineMgr::Get_Instance()->Late_Update();
+}
+
 void CMainGame::Render(void)
 {
 	HDC	hBackDC = CBmpMgr::Get_Instance()->Find_Image(L"Back");
@@ -54,8 +60,6 @@ void CMainGame::Render(void)
 	BitBlt(m_hDC, 0, 0, WINCX, WINCY, hBackDC, 0, 0, SRCCOPY);
 
 	CLineMgr::Get_Instance()->Render(m_hDC);
-
-
 }
 
 void CMainGame::Release(void)

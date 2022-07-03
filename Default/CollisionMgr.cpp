@@ -56,6 +56,8 @@ bool CCollisionMgr::Collision_Line(list<CObj*>* _Dest, list<CLine*>* _Sour)
 	return false;
 }
 
+
+
 void CCollisionMgr::Collision_Sphere(list<CObj*> _Dest, list<CObj*> _Sour)
 {
 	for (auto& Dest : _Dest)
@@ -81,4 +83,15 @@ bool CCollisionMgr::Check_Sphere(CObj * pDest, CObj * pSour)
 	//float	fRadius = (pDest->Get_Info().fCX + pSour->Get_Info().fCX) * 0.5f;
 
 	return 0;// fRadius >= fDiagonal;	// 충돌을 한 경우
+}
+
+bool CCollisionMgr::Collision_Menu(CObj * _Dest, RECT* _Sour)
+{
+	if (_Dest->Get_Info().vPos.x > _Sour->left &&
+		_Dest->Get_Info().vPos.x < _Sour->right &&
+		_Dest->Get_Info().vPos.y > _Sour->top &&
+		_Dest->Get_Info().vPos.y < _Sour->bottom)
+		return true;
+
+	return false;
 }
