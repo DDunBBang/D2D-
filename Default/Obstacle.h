@@ -28,12 +28,15 @@ public:
 
 private:
 	D3DXVECTOR3		m_vOriginPos;
+	D3DXVECTOR3		m_vMinusPos;
 	
 	float			m_fAngleSpeed;
 
 	float			m_fDistance;
 	float			m_fSpeedSet;
 	float			m_fAngleSpeedSet;
+
+	bool			m_bStart;
 
 	eSTATE			m_eState;
 };

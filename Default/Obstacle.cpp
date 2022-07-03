@@ -3,7 +3,7 @@
 
 
 CObstacle::CObstacle() : m_fAngleSpeed(0.f), m_fDistance(0.f) , m_fSpeedSet(0.f), m_fAngleSpeedSet(0.f)
-, m_eState(END)
+, m_eState(END), m_bStart(true)
 {
 }
 
@@ -41,6 +41,13 @@ void CObstacle::Initialize(void)
 
 int CObstacle::Update(void)
 {
+	if (m_bStart)
+	{
+		m_vMinusPos = m_tInfo.vPos;
+
+		m_bStart = false;
+	}
+
 	D3DXMATRIX	matRotZ, matTrans;
 
 	D3DXMatrixRotationZ(&matRotZ, D3DXToRadian(m_fAngle));
@@ -51,7 +58,7 @@ int CObstacle::Update(void)
 	for (int i = 0; i < 4; ++i)
 	{
 		m_vPoint[i] = m_vOriginPoint[i];
-		m_vPoint[i] -= {400.f, 300.f, 0.f };
+		m_vPoint[i] -= m_vMinusPos;
 
 		D3DXVec3TransformCoord(&m_vPoint[i], &m_vPoint[i], &m_tInfo.matWorld);
 	}
@@ -59,13 +66,13 @@ int CObstacle::Update(void)
 	switch (m_eState)
 	{
 	case CObstacle::RECT:
-		Test_Move();
+		Rect_Move();
 		break;
 	case CObstacle::VERTICAL:
-		Test_Vertical();
+		Vertical_Move();
 		break;
 	case CObstacle::HORIZONTAL:
-		Test_Horizontal();
+		Horizontal_Move();
 		break;
 	}
 
@@ -100,7 +107,7 @@ void CObstacle::Release(void)
 	m_vecLine.clear();
 }
 
-void CObstacle::Test_Move()
+void CObstacle::Rect_Move()
 {
 	m_fAngle += m_fAngleSpeed;
 
@@ -167,7 +174,7 @@ void CObstacle::Test_Move()
 	}
 }
 
-void CObstacle::Test_Vertical()
+void CObstacle::Vertical_Move()
 {
 	m_tInfo.vLook = { 0.f, 1.f, 0.f };
 
@@ -206,7 +213,7 @@ void CObstacle::Test_Vertical()
 	}
 }
 
-void CObstacle::Test_Horizontal()
+void CObstacle::Horizontal_Move()
 {
 	m_tInfo.vLook = { 1.f, 0.f, 0.f };
 
