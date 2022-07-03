@@ -2,7 +2,7 @@
 #include "Obstacle.h"
 
 
-CObstacle::CObstacle() : m_fAngleSpeed(0.f)
+CObstacle::CObstacle() : m_fAngleSpeed(0.f), m_fDistance(0.f) , m_fSpeedSet(0.f), m_fAngleSpeedSet(0.f)
 {
 }
 
@@ -29,6 +29,10 @@ void CObstacle::Initialize(void)
 
 	for (int i = 0; i < 4; ++i)
 		m_vOriginPoint[i] = m_vPoint[i];
+
+	m_fDistance = 100.f;
+	m_fSpeedSet = 1.f;
+	m_fAngleSpeedSet = 3.f;
 
 	Create_Line();
 }
@@ -90,10 +94,10 @@ void CObstacle::Test_Move()
 	D3DXVec3TransformNormal(&m_tInfo.vDir, &m_tInfo.vLook, &m_tInfo.matWorld);
 	m_tInfo.vPos += m_tInfo.vDir * m_fSpeed;
 
-	if(m_vOriginPos.x + 100.f <= m_tInfo.vPos.x)
+	if(m_vOriginPos.x + m_fDistance <= m_tInfo.vPos.x)
 	{
 		m_fSpeed = 0.f;
-		m_fAngleSpeed = 3.f;
+		m_fAngleSpeed = m_fAngleSpeedSet;
 
 		m_vOriginPos = m_tInfo.vPos;
 	}
@@ -102,13 +106,13 @@ void CObstacle::Test_Move()
 	{
 		m_fAngleSpeed = 0.f;
 
-		m_fSpeed = 1.f;
+		m_fSpeed = m_fSpeedSet;
 	}
 
-	if (m_vOriginPos.y + 100.f <= m_tInfo.vPos.y)
+	if (m_vOriginPos.y + m_fDistance <= m_tInfo.vPos.y)
 	{
 		m_fSpeed = 0.f;
-		m_fAngleSpeed = 3.f;
+		m_fAngleSpeed = m_fAngleSpeedSet;
 
 		m_vOriginPos = m_tInfo.vPos;
 	}
@@ -117,13 +121,13 @@ void CObstacle::Test_Move()
 	{
 		m_fAngleSpeed = 0.f;
 
-		m_fSpeed = 1.f;
+		m_fSpeed = m_fSpeedSet;
 	}
 
-	if (m_vOriginPos.x - 100.f >= m_tInfo.vPos.x)
+	if (m_vOriginPos.x - m_fDistance >= m_tInfo.vPos.x)
 	{
 		m_fSpeed = 0.f;
-		m_fAngleSpeed = 3.f;
+		m_fAngleSpeed = m_fAngleSpeedSet;
 
 		m_vOriginPos = m_tInfo.vPos;
 	}
@@ -131,13 +135,13 @@ void CObstacle::Test_Move()
 	if (m_fAngle == 270.f)
 	{
 		m_fAngleSpeed = 0.f;
-		m_fSpeed = 1.f;
+		m_fSpeed = m_fSpeedSet;
 	}
 
-	if (m_vOriginPos.y - 100.f >= m_tInfo.vPos.y)
+	if (m_vOriginPos.y - m_fDistance >= m_tInfo.vPos.y)
 	{
 		m_fSpeed = 0.f;
-		m_fAngleSpeed = 3.f;
+		m_fAngleSpeed = m_fAngleSpeedSet;
 
 		m_vOriginPos = m_tInfo.vPos;
 	}
@@ -146,6 +150,11 @@ void CObstacle::Test_Move()
 	{
 		m_fAngleSpeed = 0.f;
 		m_fAngle = 0.f;
-		m_fSpeed = 1.f;
+		m_fSpeed = m_fSpeedSet;
 	}
+}
+
+void CObstacle::Test_Patrol()
+{
+
 }

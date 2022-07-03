@@ -23,6 +23,8 @@ public:
 	const INFO&		Get_Info(void)const { return m_tInfo; }
 	const float		Get_Radious() const { return fabs(m_tInfo.vPos.y - m_vPoint[0].y); }
 
+	const D3DXMATRIX& Get_matWorld() { return m_tInfo.matWorld; }
+
 	void		Create_Line();
 	void		Update_Line();
 
