@@ -57,9 +57,8 @@ void CMainGame::Render(void)
 	}
 
 	CSceneMgr::Get_Instance()->Render(hBackDC);
+	CLineMgr::Get_Instance()->Render(hBackDC);
 	BitBlt(m_hDC, 0, 0, WINCX, WINCY, hBackDC, 0, 0, SRCCOPY);
-
-	CLineMgr::Get_Instance()->Render(m_hDC);
 }
 
 void CMainGame::Release(void)
