@@ -2,6 +2,8 @@
 #include "StageS.h"
 #include "LineMgr.h"
 #include "ObjMgr.h"
+#include "AbstractFactory.h"
+#include "Player.h"
 
 CStageS::CStageS()
 {
@@ -14,6 +16,7 @@ CStageS::~CStageS()
 
 void CStageS::Initialize(void)
 {
+	CObjMgr::Get_Instance()->Add_Object(OBJ_PLAYER, CAbstractFactory<CPlayer>::Create());
 	CLineMgr::Get_Instance()->Initialize();
 }
 

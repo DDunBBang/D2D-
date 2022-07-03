@@ -19,6 +19,7 @@ CStage::CStage()
 
 CStage::~CStage()
 {
+	Release();
 }
 
 void CStage::Initialize(void)
@@ -89,5 +90,6 @@ void CStage::Render(HDC hDC)
 
 void CStage::Release(void)
 {
+	CObjMgr::Get_Instance()->Destroy_Instance();
 	CLineMgr::Get_Instance()->Destroy_Instance();
 }
