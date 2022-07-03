@@ -2,6 +2,8 @@
 #include "StageL.h"
 #include "LineMgr.h"
 #include "ObjMgr.h"
+#include "AbstractFactory.h"
+#include "Grow.h"
 
 CStageL::CStageL()
 {
@@ -16,6 +18,8 @@ void CStageL::Initialize(void)
 {
 	Load_File();
 	CLineMgr::Get_Instance()->Initialize();
+
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CGrow>::Create(400.f, 300.f));
 }
 
 int CStageL::Update(void)

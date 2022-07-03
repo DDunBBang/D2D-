@@ -9,6 +9,7 @@
 #include "KeyMgr.h"
 #include "CollisionMgr.h"
 #include "SceneMgr.h"
+#include "Grow.h"
 
 CStage::CStage()
 {

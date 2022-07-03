@@ -13,24 +13,11 @@ public:
 		return pInstance;
 	}
 
-	static CObj*		Create(float _fX, float _fY, float _fAngle)
+	static CObj*		Create(float _fX, float _fY)
 	{
 		CObj*		pInstance = new T;
-		pInstance->Initialize();
 		pInstance->Set_Pos(_fX, _fY);
-		pInstance->Set_Angle(_fAngle);
-
-		return pInstance;
-	}
-
-	static CObj*		Create(float _fX, float _fY, DIRECTION eDir = DIR_END)
-	{
-		CObj*		pInstance = new T;
 		pInstance->Initialize();
-		pInstance->Set_Pos(_fX, _fY);
-
-		if (DIR_END != eDir)
-			//pInstance->Set_Dir(eDir);
 
 		return pInstance;
 	}

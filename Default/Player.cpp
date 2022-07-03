@@ -22,10 +22,6 @@ void CPlayer::Initialize(void)
 	m_fSpeed = 4.f;
 	m_fAngle = 0.f;
 
-	m_vPosin.x = m_tInfo.vPos.x;
-	m_vPosin.y = m_tInfo.vPos.y - 20.f;
-	m_vPosin.z = 0.f;
-
 	m_vPoint[0] = { m_tInfo.vPos.x - 10.f , m_tInfo.vPos.y - 10.f, 0.f };
 	m_vPoint[1] = { m_tInfo.vPos.x + 10.f , m_tInfo.vPos.y - 10.f, 0.f };
 	m_vPoint[2] = { m_tInfo.vPos.x + 10.f , m_tInfo.vPos.y + 10.f, 0.f };
@@ -40,17 +36,15 @@ void CPlayer::Initialize(void)
 
 int CPlayer::Update(void)
 {
-	m_tInfo.vDir = ::Get_Mouse() - m_tInfo.vPos;
-
 	Key_Input();
 
 	D3DXMATRIX	matScale, matRotZ, matTrans;
 
 	D3DXMatrixScaling(&matScale, 1.f, 1.f, 1.f);
-	D3DXMatrixRotationZ(&matRotZ, m_fAngle);
+	//D3DXMatrixRotationZ(&matRotZ, m_fAngle);
 	D3DXMatrixTranslation(&matTrans, m_tInfo.vPos.x, m_tInfo.vPos.y, m_tInfo.vPos.z);
 
-	m_tInfo.matWorld = matScale * matRotZ * matTrans;
+	m_tInfo.matWorld = matScale * matTrans;
 
 	for (int i = 0; i < 4; ++i)
 	{
