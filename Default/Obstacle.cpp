@@ -15,7 +15,7 @@ CObstacle::~CObstacle()
 
 void CObstacle::Initialize(void)
 {
-	m_tInfo.vPos = { 400.f, 300.f, 0.f };
+	//m_tInfo.vPos = { 400.f, 300.f, 0.f };
 	m_tInfo.vLook = { 1.f, 0.f, 0.f };
 
 	m_vOriginPos = m_tInfo.vPos;
@@ -34,7 +34,7 @@ void CObstacle::Initialize(void)
 	m_fDistance = 100.f;
 	m_fSpeedSet = 1.f;
 	m_fAngleSpeedSet = 3.f;
-	m_eState = HORIZONTAL;
+	m_eState = RECT;
 
 	Create_Line();
 }
@@ -44,7 +44,7 @@ int CObstacle::Update(void)
 	if (m_bStart)
 	{
 		m_vMinusPos = m_tInfo.vPos;
-
+		m_fSpeed = m_fSpeedSet;
 		m_bStart = false;
 	}
 
