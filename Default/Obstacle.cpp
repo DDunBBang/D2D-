@@ -3,6 +3,7 @@
 
 
 CObstacle::CObstacle() : m_fAngleSpeed(0.f), m_fDistance(0.f) , m_fSpeedSet(0.f), m_fAngleSpeedSet(0.f)
+, m_eState(END)
 {
 }
 
@@ -33,6 +34,7 @@ void CObstacle::Initialize(void)
 	m_fDistance = 100.f;
 	m_fSpeedSet = 1.f;
 	m_fAngleSpeedSet = 3.f;
+	m_eState = HORIZONTAL;
 
 	Create_Line();
 }
@@ -54,7 +56,18 @@ int CObstacle::Update(void)
 		D3DXVec3TransformCoord(&m_vPoint[i], &m_vPoint[i], &m_tInfo.matWorld);
 	}
 
-	Test_Move();
+	switch (m_eState)
+	{
+	case CObstacle::RECT:
+		Test_Move();
+		break;
+	case CObstacle::VERTICAL:
+		Test_Vertical();
+		break;
+	case CObstacle::HORIZONTAL:
+		Test_Horizontal();
+		break;
+	}
 
 	Update_Line();
 
@@ -154,7 +167,80 @@ void CObstacle::Test_Move()
 	}
 }
 
-void CObstacle::Test_Patrol()
+void CObstacle::Test_Vertical()
 {
+	m_tInfo.vLook = { 0.f, 1.f, 0.f };
 
+	m_fAngle += m_fAngleSpeed;
+
+	D3DXVec3TransformNormal(&m_tInfo.vDir, &m_tInfo.vLook, &m_tInfo.matWorld);
+	m_tInfo.vPos += m_tInfo.vDir * m_fSpeed;
+
+	if (m_vOriginPos.y + m_fDistance <= m_tInfo.vPos.y)
+	{
+		m_fSpeed = 0.f;
+		m_fAngleSpeed = m_fAngleSpeedSet;
+
+		m_vOriginPos = m_tInfo.vPos;
+	}
+
+	if (m_fAngle == 180.f)
+	{
+		m_fAngleSpeed = 0.f;
+		m_fSpeed = m_fSpeedSet;
+	}
+
+	if (m_vOriginPos.y - m_fDistance >= m_tInfo.vPos.y)
+	{
+		m_fSpeed = 0.f;
+		m_fAngleSpeed = m_fAngleSpeedSet;
+
+		m_vOriginPos = m_tInfo.vPos;
+	}
+
+	if (m_fAngle == 360.f)
+	{
+		m_fAngleSpeed = 0.f;
+		m_fAngle = 0.f;
+		m_fSpeed = m_fSpeedSet;
+	}
+}
+
+void CObstacle::Test_Horizontal()
+{
+	m_tInfo.vLook = { 1.f, 0.f, 0.f };
+
+	m_fAngle += m_fAngleSpeed;
+
+	D3DXVec3TransformNormal(&m_tInfo.vDir, &m_tInfo.vLook, &m_tInfo.matWorld);
+	m_tInfo.vPos += m_tInfo.vDir * m_fSpeed;
+
+	if (m_vOriginPos.x + m_fDistance <= m_tInfo.vPos.x)
+	{
+		m_fSpeed = 0.f;
+		m_fAngleSpeed = m_fAngleSpeedSet;
+
+		m_vOriginPos = m_tInfo.vPos;
+	}
+
+	if (m_fAngle == 180.f)
+	{
+		m_fAngleSpeed = 0.f;
+		m_fSpeed = m_fSpeedSet;
+	}
+
+	if (m_vOriginPos.x - m_fDistance >= m_tInfo.vPos.x)
+	{
+		m_fSpeed = 0.f;
+		m_fAngleSpeed = m_fAngleSpeedSet;
+
+		m_vOriginPos = m_tInfo.vPos;
+	}
+
+	if (m_fAngle == 360.f)
+	{
+		m_fAngleSpeed = 0.f;
+		m_fAngle = 0.f;
+		m_fSpeed = m_fSpeedSet;
+	}
 }
