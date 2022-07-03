@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "ObjMgr.h"
 #include "Obj.h"
+#include "CollisionMgr.h"
+#include "LineMgr.h"
 
 CObjMgr*		CObjMgr::m_pInstance = nullptr;
 
@@ -33,6 +35,8 @@ void CObjMgr::Delete_ID(OBJID eID)
 int CObjMgr::Update(void)
 {
 	int	iEvent = 0;
+
+	CCollisionMgr::Collision_Line(&m_ObjList[OBJ_PLAYER], CLineMgr::Get_Instance()->Get_LineList());
 
 	for (size_t i = 0; i < OBJ_END; ++i)
 	{

@@ -25,9 +25,6 @@ private:
 	D3DXVECTOR3		m_vPosin;
 	
 	D3DXVECTOR3		m_vFront;
-
-	float			m_fAngle;
-
 };
 
 // 1. 마우스 포인터를 따라다니는 플레이어를 만들어라(단, 벡터 뺄셈이 아닌 내적을 이용해서 만들어라)

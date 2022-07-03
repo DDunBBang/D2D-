@@ -79,6 +79,9 @@
     <Filter Include="02. Scene\StageS">
       <UniqueIdentifier>{7a4f9b51-afc5-4679-bf99-37207d74108f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. Obj\03. Obstacle">
+      <UniqueIdentifier>{08d5e28a-c67c-42cf-8250-1cb10d3f1543}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -171,6 +174,9 @@
     <ClInclude Include="StageL.h">
       <Filter>02. Scene\StageL</Filter>
     </ClInclude>
+    <ClInclude Include="Obstacle.h">
+      <Filter>01. Obj\03. Obstacle</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -235,6 +241,9 @@
     </ClCompile>
     <ClCompile Include="StageL.cpp">
       <Filter>02. Scene\StageL</Filter>
+    </ClCompile>
+    <ClCompile Include="Obstacle.cpp">
+      <Filter>01. Obj\03. Obstacle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
