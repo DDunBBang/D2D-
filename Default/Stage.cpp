@@ -10,6 +10,7 @@
 #include "CollisionMgr.h"
 #include "SceneMgr.h"
 #include "Grow.h"
+#include "Obstacle.h"
 
 CStage::CStage()
 {
@@ -24,6 +25,7 @@ void CStage::Initialize(void)
 {
 	CLineMgr::Get_Instance()->Load_File();
 	CObjMgr::Get_Instance()->Add_Object(OBJ_PLAYER, CAbstractFactory<CPlayer>::Create());
+	CObjMgr::Get_Instance()->Add_Object(OBJ_OBSTACLE, CAbstractFactory<CObstacle>::Create());
 	//CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CMonster>::Create());
 	CLineMgr::Get_Instance()->Initialize();
 

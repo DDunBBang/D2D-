@@ -14,4 +14,3 @@ public:
 	static bool	Collision_Menu(CObj* _Dest, RECT* _Sour);
 
 };
-

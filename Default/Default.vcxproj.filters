@@ -81,6 +81,8 @@
     </Filter>
     <Filter Include="01. Obj\02. Monster\Grow">
       <UniqueIdentifier>{1414e235-dfab-47a8-9ba5-867c229de7ff}</UniqueIdentifier>
+    <Filter Include="01. Obj\03. Obstacle">
+      <UniqueIdentifier>{08d5e28a-c67c-42cf-8250-1cb10d3f1543}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -176,6 +178,8 @@
     </ClInclude>
     <ClInclude Include="Grow.h">
       <Filter>01. Obj\02. Monster\Grow</Filter>
+    <ClInclude Include="Obstacle.h">
+      <Filter>01. Obj\03. Obstacle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -244,6 +248,8 @@
     </ClCompile>
     <ClCompile Include="Grow.cpp">
       <Filter>01. Obj\02. Monster\Grow</Filter>
+    <ClCompile Include="Obstacle.cpp">
+      <Filter>01. Obj\03. Obstacle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
