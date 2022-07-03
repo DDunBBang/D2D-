@@ -1,14 +1,11 @@
 #pragma once
-#include "Obj.h"
-class CMonster :
-	public CObj
+#include "Monster.h"
+class CGrow :
+	public CMonster
 {
 public:
-	CMonster();
-	virtual ~CMonster();
-
-public:
-	//void		Set_Player(CObj* pPlayer) { m_pPlayer = pPlayer; }
+	CGrow();
+	virtual ~CGrow();
 
 public:
 	virtual void Initialize(void) override;
@@ -18,7 +15,8 @@ public:
 	virtual void Release(void) override;
 
 private:
-	//CObj*			m_pPlayer = nullptr;
+	bool	m_bGrow;
 
+	float	m_fSize;
 };
 

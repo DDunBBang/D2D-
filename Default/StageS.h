@@ -1,12 +1,11 @@
 #pragma once
 #include "Scene.h"
-
-class CStage :
+class CStageS :
 	public CScene
 {
 public:
-	CStage();
-	virtual ~CStage();
+	CStageS();
+	virtual ~CStageS();
 
 public:
 	virtual		void	Initialize(void);
@@ -15,7 +14,7 @@ public:
 	virtual		void	Render(HDC hDC);
 	virtual		void	Release(void);
 
-private:
-	RECT	m_tRect[4];
+public:
+	void	Create_Obstacle();
 };
 

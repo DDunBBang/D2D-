@@ -76,6 +76,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(DASDK_DIR)include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -159,17 +160,26 @@
     <ClInclude Include="Define.h" />
     <ClInclude Include="Enum.h" />
     <ClInclude Include="Function.h" />
+    <ClInclude Include="Grow.h" />
     <ClInclude Include="Include.h" />
+    <ClInclude Include="KeyMgr.h" />
+    <ClInclude Include="Line.h" />
+    <ClInclude Include="LineMgr.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="MyBmp.h" />
     <ClInclude Include="Obj.h" />
     <ClInclude Include="ObjMgr.h" />
+    <ClInclude Include="Obstacle.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneMgr.h" />
     <ClInclude Include="Stage.h" />
+    <ClInclude Include="StageB.h" />
+    <ClInclude Include="StageJ.h" />
+    <ClInclude Include="StageL.h" />
+    <ClInclude Include="StageS.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Struct.h" />
     <ClInclude Include="targetver.h" />
@@ -179,15 +189,24 @@
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="CollisionMgr.cpp" />
     <ClCompile Include="Default.cpp" />
+    <ClCompile Include="Grow.cpp" />
+    <ClCompile Include="KeyMgr.cpp" />
+    <ClCompile Include="Line.cpp" />
+    <ClCompile Include="LineMgr.cpp" />
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="MyBmp.cpp" />
     <ClCompile Include="Obj.cpp" />
     <ClCompile Include="ObjMgr.cpp" />
+    <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneMgr.cpp" />
     <ClCompile Include="Stage.cpp" />
+    <ClCompile Include="StageB.cpp" />
+    <ClCompile Include="StageJ.cpp" />
+    <ClCompile Include="StageL.cpp" />
+    <ClCompile Include="StageS.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

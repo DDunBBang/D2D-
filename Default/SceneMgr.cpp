@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "SceneMgr.h"
-
+#include "ObjMgr.h"
 
 CSceneMgr* CSceneMgr::m_pInstance = nullptr;
 
@@ -21,12 +21,25 @@ void CSceneMgr::Scene_Change(SCENEID eScene)
 
 	if (m_ePreScene != m_eCurScene)
 	{
+		CObjMgr::Get_Instance()->Release();
 		Safe_Delete(m_pScene);	
 
 		switch (m_eCurScene)
 		{
 		case SC_STAGE:
 			m_pScene = new CStage;
+			break;
+		case SC_STAGEL:
+			m_pScene = new CStageL;
+			break;
+		case SC_STAGEJ:
+			m_pScene = new CStageJ;
+			break;
+		case SC_STAGEB:
+			m_pScene = new CStageB;
+			break;
+		case SC_STAGES:
+			m_pScene = new CStageS;
 			break;
 		}
 
