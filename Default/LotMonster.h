@@ -14,31 +14,35 @@ public:
 	virtual void Render(HDC hDC) override;
 	virtual void Release(void) override;
 
-	void	Set_Angle(float _fAngle) { m_fAngle = _fAngle; }
-	void	Set_Count(int _iCount) { m_iCount = _iCount; }
-	void	Set_Pos(D3DXVECTOR3 _Pos) { m_tInfo.vPos = _Pos; }
+	void	Set_AngleSpeed(float _fSpeed)	{ m_fAngleSpeed = _fSpeed; }
+	void	Set_Count(int _iCount)		{ m_iCount = _iCount; }
+	void	Set_Pos(D3DXVECTOR3 _Pos)	{ m_tInfo.vPos = _Pos; }
+
+	void	Create_Rect();
 
 private:
-	INFO		m_tInfo;
-
 	LINEPOINT	m_tLinePoint[DIR_END][DIR_END];
 
 	D3DXVECTOR3		m_vPoint[4];
 	D3DXVECTOR3		m_vOriginPoint[4];
 
-	D3DXVECTOR3		m_vPointTop[20];
-	D3DXVECTOR3		m_vOriginPointTop[20];
+	D3DXVECTOR3		m_vPointTop[40];
+	D3DXVECTOR3		m_vOriginPointTop[40];
 
-	D3DXVECTOR3		m_vPointRight[20];
-	D3DXVECTOR3		m_vOriginPointRight[20];
+	D3DXVECTOR3		m_vPointRight[40];
+	D3DXVECTOR3		m_vOriginPointRight[40];
 
-	D3DXVECTOR3		m_vPointBottom[20];
-	D3DXVECTOR3		m_vOriginPointBottom[20];
+	D3DXVECTOR3		m_vPointBottom[40];
+	D3DXVECTOR3		m_vOriginPointBottom[40];
 
-	D3DXVECTOR3		m_vPointLeft[20];
-	D3DXVECTOR3		m_vOriginPointLeft[20];
+	D3DXVECTOR3		m_vPointLeft[40];
+	D3DXVECTOR3		m_vOriginPointLeft[40];
+
+	D3DXVECTOR3		m_vMinusPos;
+
+	bool		m_bStart;
 
 	int			m_iCount;
-
+	float		m_fAngleSpeed;
 };
 

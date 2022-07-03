@@ -2,7 +2,7 @@
 #include "LotMonster.h"
 
 
-CLotMonster::CLotMonster()
+CLotMonster::CLotMonster() : m_bStart(true), m_fAngleSpeed(0.f)
 {
 }
 
@@ -14,11 +14,11 @@ CLotMonster::~CLotMonster()
 
 void CLotMonster::Initialize(void)
 {
-	m_tInfo.vPos = { 400.f, 400.f, 0.f };
+	//m_tInfo.vPos = { 400.f, 400.f, 0.f };
 	m_tInfo.vDir = { 1.f, 0.f, 0.f };
 	m_tInfo.vLook = { 1.f, 0.f, 0.f };
 
-	m_iCount = 2;
+	m_iCount = 10;
 
 	m_vPoint[0] = { m_tInfo.vPos.x - 10.f , m_tInfo.vPos.y - 10.f, 0.f };
 	m_vPoint[1] = { m_tInfo.vPos.x + 10.f , m_tInfo.vPos.y - 10.f, 0.f };
@@ -53,10 +53,18 @@ void CLotMonster::Initialize(void)
 		m_vOriginPointBottom[i] = m_vPointBottom[i];
 	for (int i = 0; i <  m_iCount * 4; ++i)
 		m_vOriginPointLeft[i] = m_vPointLeft[i];
+
+	m_fAngleSpeed = 2.f;
 }
 
 int CLotMonster::Update(void)
 {
+	if (m_bStart)
+	{
+		m_vMinusPos = m_tInfo.vPos;
+		m_bStart = false;
+	}
+
 	D3DXMATRIX  matScale, matRotz, matTrans;
 
 	D3DXMatrixScaling(&matScale, 1.f, 1.f, 1.f);
@@ -68,66 +76,19 @@ int CLotMonster::Update(void)
 	for (int i = 0; i < 4; ++i)
 	{
 		m_vPoint[i] = m_vOriginPoint[i];
-		m_vPoint[i] -= { 400.f, 400.f, 0.f };
+		m_vPoint[i] -= m_vMinusPos;
 
 		D3DXVec3TransformCoord(&m_vPoint[i], &m_vPoint[i], &m_tInfo.matWorld);
 	}
 
-	//위
-	for (int i = 0; i < m_iCount * 4; ++i)
-	{
-		m_vPointTop[i] = m_vOriginPointTop[i];
+	Create_Rect();
 
-		if (i < m_iCount * 4)
-		{
-			m_vPointTop[i] -= {m_tInfo.vPos.x, m_tInfo.vPos.y + m_iCount * 30.f, 0.f };
-		}
-
-		D3DXVec3TransformCoord(&m_vPointTop[i], &m_vPointTop[i], &m_tInfo.matWorld);
-	}
-
-	//오른쪽
-	for (int i = 0; i < m_iCount * 4; ++i)
-	{
-		m_vPointRight[i] = m_vOriginPointRight[i];
-
-		if (i < m_iCount * 4)
-		{
-			m_vPointRight[i] -= {m_tInfo.vPos.x - m_iCount * 30.f, m_tInfo.vPos.y, 0.f };
-		}
-
-		D3DXVec3TransformCoord(&m_vPointRight[i], &m_vPointRight[i], &m_tInfo.matWorld);
-	}
-	//아래
-	for (int i = 0; i < m_iCount * 4; ++i)
-	{
-		m_vPointBottom[i] = m_vOriginPointBottom[i];
-
-		if (i < m_iCount * 4)
-		{
-			m_vPointBottom[i] -= {m_tInfo.vPos.x, m_tInfo.vPos.y - m_iCount * 30.f, 0.f };
-		}
-
-		D3DXVec3TransformCoord(&m_vPointBottom[i], &m_vPointBottom[i], &m_tInfo.matWorld);
-	}
-	//왼쪽
-	for (int i = 0; i < m_iCount * 4; ++i)
-	{
-		m_vPointLeft[i] = m_vOriginPointLeft[i];
-
-		if (i < m_iCount * 4)
-		{
-			m_vPointLeft[i] -= {m_tInfo.vPos.x + m_iCount * 30.f, m_tInfo.vPos.y, 0.f };
-		}
-
-		D3DXVec3TransformCoord(&m_vPointLeft[i], &m_vPointLeft[i], &m_tInfo.matWorld);
-	}
 	return 0;
 }
 
 void CLotMonster::Late_Update(void)
 {
-	//m_fAngle += D3DXToRadian(2.f);
+	m_fAngle += D3DXToRadian(m_fAngleSpeed);
 }
 
 void CLotMonster::Render(HDC hDC)
@@ -190,5 +151,85 @@ void CLotMonster::Render(HDC hDC)
 
 void CLotMonster::Release(void)
 {
+}
+
+void CLotMonster::Create_Rect()
+{
+	int iDistance = 30;
+	//위
+	for (int i = 0; i < m_iCount * 4; ++i)
+	{
+		m_vPointTop[i] = m_vOriginPointTop[i];
+
+		m_vPointTop[i] -= {m_tInfo.vPos.x, m_tInfo.vPos.y + iDistance, 0.f };
+
+		if ((i + 1) % 4 == 0)
+		{
+			iDistance += 30;
+		}
+
+		if (i == m_iCount * 4 - 1)
+		{
+			iDistance = 30;
+		}
+		D3DXVec3TransformCoord(&m_vPointTop[i], &m_vPointTop[i], &m_tInfo.matWorld);
+	}
+
+	//오른쪽
+	for (int i = 0; i < m_iCount * 4; ++i)
+	{
+		m_vPointRight[i] = m_vOriginPointRight[i];
+
+		m_vPointRight[i] -= {m_tInfo.vPos.x - iDistance, m_tInfo.vPos.y, 0.f };
+
+		if ((i + 1) % 4 == 0)
+		{
+			iDistance += 30;
+		}
+
+		if (i == m_iCount * 4 - 1)
+		{
+			iDistance = 30;
+		}
+		D3DXVec3TransformCoord(&m_vPointRight[i], &m_vPointRight[i], &m_tInfo.matWorld);
+	}
+
+	// 아래
+	for (int i = 0; i < m_iCount * 4; ++i)
+	{
+		m_vPointBottom[i] = m_vOriginPointBottom[i];
+
+		m_vPointBottom[i] -= {m_tInfo.vPos.x, m_tInfo.vPos.y - iDistance, 0.f };
+
+		if ((i + 1) % 4 == 0)
+		{
+			iDistance += 30;
+		}
+
+		if (i == m_iCount * 4 - 1)
+		{
+			iDistance = 30;
+		}
+		D3DXVec3TransformCoord(&m_vPointBottom[i], &m_vPointBottom[i], &m_tInfo.matWorld);
+	}
+
+	//왼쪽
+	for (int i = 0; i < m_iCount * 4; ++i)
+	{
+		m_vPointLeft[i] = m_vOriginPointLeft[i];
+
+		m_vPointLeft[i] -= {m_tInfo.vPos.x + iDistance, m_tInfo.vPos.y, 0.f };
+
+		if ((i + 1) % 4 == 0)
+		{
+			iDistance += 30;
+		}
+
+		if (i == m_iCount * 4 - 1)
+		{
+			iDistance = 30;
+		}
+		D3DXVec3TransformCoord(&m_vPointLeft[i], &m_vPointLeft[i], &m_tInfo.matWorld);
+	}
 }
 
