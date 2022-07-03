@@ -15,6 +15,8 @@ public:
 		m_tInfo.vPos.x = _fX;
 		m_tInfo.vPos.y = _fY;
 	}
+	void		Set_PosX(float _fX) { m_tInfo.vPos.x += _fX; }
+	void		Set_PosY(float _fY) { m_tInfo.vPos.y += _fY; }
 
 	void		Set_Dead(void) { m_bDead = true; }
 

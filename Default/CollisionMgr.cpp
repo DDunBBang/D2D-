@@ -48,6 +48,23 @@ bool CCollisionMgr::Collision_Line(list<CObj*>* _Dest, list<CLine*>* _Sour)
 
 			if (fHeight < Dest->Get_Radious())
 			{
+				float fLength = fabs(fHeight - Dest->Get_Radious());
+
+				if ((*iter)->Get_Line().tLPoint.fX == (*iter)->Get_Line().tRPoint.fX)
+				{
+					if (Dest->Get_Info().vPos.x < (*iter)->Get_Line().tLPoint.fX)
+						Dest->Set_PosX(-(fLength));
+					else
+						Dest->Set_PosX((fLength));
+				}
+				else if ((*iter)->Get_Line().tLPoint.fY == (*iter)->Get_Line().tRPoint.fY)
+				{
+					if (Dest->Get_Info().vPos.y < (*iter)->Get_Line().tLPoint.fY)
+						Dest->Set_PosY(-(fLength));
+					else
+						Dest->Set_PosY((fLength));
+				}
+
 				return true;
 			}
 		}
