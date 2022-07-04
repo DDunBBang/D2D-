@@ -70,6 +70,8 @@ void CObjMgr::Late_Update(void)
 				break;
 		}
 	}
+
+	CCollisionMgr::Collision_Sphere(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_MONSTER]);
 }
 
 void CObjMgr::Render(HDC hDC)
