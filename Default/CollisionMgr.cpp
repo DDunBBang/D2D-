@@ -98,7 +98,7 @@ bool CCollisionMgr::Check_Sphere(CObj * pDest, CObj * pSour)
 	// sqrt : 루트를 씌워주는 함수
 	float	fDiagonal = sqrtf(fWidth * fWidth + fHeight * fHeight);
 
-	float	fRadius = (pDest->Get_Radious() + pSour->Get_Radious()) * 0.5f;
+	float	fRadius = (pDest->Get_Radious() + pSour->Get_Radious());
 
 	return fRadius >= fDiagonal;	// 충돌을 한 경우
 }
@@ -109,6 +109,17 @@ bool CCollisionMgr::Collision_Menu(CObj * _Dest, RECT* _Sour)
 		_Dest->Get_Info().vPos.x < _Sour->right &&
 		_Dest->Get_Info().vPos.y > _Sour->top &&
 		_Dest->Get_Info().vPos.y < _Sour->bottom)
+		return true;
+
+	return false;
+}
+
+bool CCollisionMgr::Collision_Goal(CObj * _Dest, CObj* _Sour)
+{
+	if (_Dest->Get_Info().vPos.x > _Sour->Get_Info().vPos.x - 25.f &&
+		_Dest->Get_Info().vPos.x < _Sour->Get_Info().vPos.x + 25.f &&
+		_Dest->Get_Info().vPos.y > _Sour->Get_Info().vPos.y - 25.f &&
+		_Dest->Get_Info().vPos.y < _Sour->Get_Info().vPos.y + 25.f)
 		return true;
 
 	return false;

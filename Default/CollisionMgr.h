@@ -12,5 +12,6 @@ public:
 	static void	Collision_Sphere(list<CObj*> _Dest, list<CObj*> _Sour);
 	static bool Check_Sphere(CObj* pDest, CObj* pSour);
 	static bool	Collision_Menu(CObj* _Dest, RECT* _Sour);
+	static bool	Collision_Goal(CObj* _Dest, CObj* _Sour); 
 
 };
