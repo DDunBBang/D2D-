@@ -148,6 +148,7 @@ void CStageS::Create_Rot()
 
 void CStageS::Create_Grow()
 {
-	CObj*	pGrow = CAbstractFactory<CGrow>::Create(400.f,300.f);
+	CObj*	pGrow = CAbstractFactory<CGrow>::Create(300.f,300.f);
+	dynamic_cast<CGrow*>(pGrow)->Set_SizeMax(10);
 	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, pGrow);
 }

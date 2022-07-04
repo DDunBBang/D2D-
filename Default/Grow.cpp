@@ -2,7 +2,7 @@
 #include "Grow.h"
 
 
-CGrow::CGrow()
+CGrow::CGrow() : m_fSizeMax(0)
 {
 }
 
@@ -16,6 +16,7 @@ void CGrow::Initialize(void)
 {
 	m_bGrow = true;
 	m_fSize = 1.f;
+	m_fSizeMax = 5;
 
 	m_vPoint[0] = { m_tInfo.vPos.x - 10.f , m_tInfo.vPos.y - 10.f, 0.f };
 	m_vPoint[1] = { m_tInfo.vPos.x + 10.f , m_tInfo.vPos.y - 10.f, 0.f };
@@ -30,7 +31,11 @@ void CGrow::Initialize(void)
 
 int CGrow::Update(void)
 {
-
+	if (m_bStart)
+	{
+		m_vMinusPos = m_tInfo.vPos;
+		m_bStart = false;
+	}
 	D3DXMATRIX	matScale, matRotZ, matTrans;
 
 	D3DXMatrixScaling(&matScale, m_fSize, m_fSize, m_fSize);
@@ -42,7 +47,7 @@ int CGrow::Update(void)
 	for (int i = 0; i < 4; ++i)
 	{
 		m_vPoint[i] = m_vOriginPoint[i];
-		m_vPoint[i] -= {400.f, 300.f, 0.f };
+		m_vPoint[i] -= m_vMinusPos;
 
 		D3DXVec3TransformCoord(&m_vPoint[i], &m_vPoint[i], &m_tInfo.matWorld);
 	}
@@ -56,7 +61,7 @@ void CGrow::Late_Update(void)
 	if (m_bGrow)
 	{
 		m_fSize += 0.1f;
-		if (m_fSize >= 5)
+		if (m_fSize >= m_fSizeMax)
 			m_bGrow = false;
 	}
 	else

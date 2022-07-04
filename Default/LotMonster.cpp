@@ -2,7 +2,7 @@
 #include "LotMonster.h"
 
 
-CLotMonster::CLotMonster() : m_bStart(true), m_fAngleSpeed(0.f)
+CLotMonster::CLotMonster() : m_fAngleSpeed(0.f)
 {
 }
 

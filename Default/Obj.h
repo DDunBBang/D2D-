@@ -43,8 +43,10 @@ protected:
 
 	D3DXVECTOR3		m_vPoint[4];
 	D3DXVECTOR3		m_vOriginPoint[4];
+	D3DXVECTOR3		m_vMinusPos;
 
 	bool			m_bDead;
+	bool			m_bStart;
 
 	float			m_fSpeed;
 	float			m_fAngle;
