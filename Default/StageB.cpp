@@ -21,7 +21,6 @@ void CStageB::Initialize(void)
 {
 	Load_File();
 	CLineMgr::Get_Instance()->Initialize();
-	CLineMgr::Get_Instance()->Load_File_B();
 	CObjMgr::Get_Instance()->Add_Object(OBJ_PLAYER, CAbstractFactory<CPlayer>::Create(135,495));
 	CObj* pObj_ = CAbstractFactory<CLotMonster>::Create(220,150);
 	dynamic_cast<CLotMonster*>(pObj_)->Set_Count(2);
