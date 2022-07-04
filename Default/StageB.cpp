@@ -7,6 +7,7 @@
 #include "Obstacle.h"
 #include "LotMonster.h"
 #include "Grow.h"
+#include "Goal.h"
 
 CStageB::CStageB()
 {
@@ -22,6 +23,7 @@ void CStageB::Initialize(void)
 	Load_File();
 	CLineMgr::Get_Instance()->Initialize();
 	CObjMgr::Get_Instance()->Add_Object(OBJ_PLAYER, CAbstractFactory<CPlayer>::Create(135,495));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_GOAL, CAbstractFactory<CGoal>::Create(430.f, 495.f));
 	CObj* pObj_ = CAbstractFactory<CLotMonster>::Create(220,150);
 	dynamic_cast<CLotMonster*>(pObj_)->Set_Count(2);
 
