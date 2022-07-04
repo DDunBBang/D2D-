@@ -165,6 +165,7 @@
     <ClInclude Include="KeyMgr.h" />
     <ClInclude Include="Line.h" />
     <ClInclude Include="LineMgr.h" />
+    <ClInclude Include="LotMonster.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="MyBmp.h" />
@@ -193,6 +194,7 @@
     <ClCompile Include="KeyMgr.cpp" />
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="LineMgr.cpp" />
+    <ClCompile Include="LotMonster.cpp" />
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="MyBmp.cpp" />
