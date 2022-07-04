@@ -70,7 +70,9 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="LotMonster.cpp" />
+    <ClCompile Include="LotMonster.cpp">
+      <Filter>01. Obj\04. LotMonster</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainGame.h">
@@ -166,7 +168,9 @@
     <ClInclude Include="targetver.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="LotMonster.h" />
+    <ClInclude Include="LotMonster.h">
+      <Filter>01. Obj\04. LotMonster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Default.ico">
@@ -260,6 +264,9 @@
     </Filter>
     <Filter Include="헤더 파일">
       <UniqueIdentifier>{8da1b9ac-9c9e-43a3-9587-ed4acf2d6f35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\04. LotMonster">
+      <UniqueIdentifier>{d09a4ea6-5c8a-4151-a72b-fb25103d412f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
