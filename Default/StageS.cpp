@@ -21,7 +21,7 @@ CStageS::~CStageS()
 void CStageS::Initialize(void)
 {
 	CLineMgr::Get_Instance()->Load_File();
-	CObjMgr::Get_Instance()->Add_Object(OBJ_PLAYER, CAbstractFactory<CPlayer>::Create());
+	CObjMgr::Get_Instance()->Add_Object(OBJ_PLAYER, CAbstractFactory<CPlayer>::Create(45.f, 45.f));
 
 	Create_Obstacle();
 	Create_Rot();
@@ -125,6 +125,13 @@ void CStageS::Create_Obstacle()
 	dynamic_cast<CObstacle*>(pObstacle10)->Set_AngleSpeedSet(6.f);
 	dynamic_cast<CObstacle*>(pObstacle10)->Set_Distance(80.f);
 	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, pObstacle10);
+
+	CObj*	pObstacle11 = CAbstractFactory<CObstacle>::Create(699.f, 499.f);
+	dynamic_cast<CObstacle*>(pObstacle11)->Set_State(CObstacle::RECT);
+	dynamic_cast<CObstacle*>(pObstacle11)->Set_SpeedSet(2.f);
+	dynamic_cast<CObstacle*>(pObstacle11)->Set_AngleSpeedSet(5.f);
+	dynamic_cast<CObstacle*>(pObstacle11)->Set_Distance(50.f);
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, pObstacle11);
 }
 
 void CStageS::Create_Rot()
@@ -148,7 +155,19 @@ void CStageS::Create_Rot()
 
 void CStageS::Create_Grow()
 {
-	CObj*	pGrow = CAbstractFactory<CGrow>::Create(300.f,300.f);
-	dynamic_cast<CGrow*>(pGrow)->Set_SizeMax(10);
+	CObj*	pGrow = CAbstractFactory<CGrow>::Create(512.f,62.f);
+	dynamic_cast<CGrow*>(pGrow)->Set_SizeMax(5);
 	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, pGrow);
+
+	CObj*	pGrow2 = CAbstractFactory<CGrow>::Create(726.f, 400.f);
+	dynamic_cast<CGrow*>(pGrow2)->Set_SizeMax(4);
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, pGrow2);
+
+	CObj*	pGrow3 = CAbstractFactory<CGrow>::Create(726.f, 280.f);
+	dynamic_cast<CGrow*>(pGrow3)->Set_SizeMax(3);
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, pGrow3);
+
+	CObj*	pGrow4 = CAbstractFactory<CGrow>::Create(726.f, 160.f);
+	dynamic_cast<CGrow*>(pGrow4)->Set_SizeMax(4);
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, pGrow4);
 }
