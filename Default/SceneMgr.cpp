@@ -53,6 +53,8 @@ void CSceneMgr::Scene_Change(SCENEID eScene)
 
 void CSceneMgr::Update(void)
 {
+	if (GetAsyncKeyState('R'))
+		Scene_Change(SC_STAGE);
 	m_pScene->Update();
 }
 
