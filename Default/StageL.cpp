@@ -7,7 +7,6 @@
 #include "Player.h"
 #include "Obstacle.h"
 #include "LotMonster.h"
-#include "SceneMgr.h"
 
 CStageL::CStageL()
 {
@@ -38,9 +37,6 @@ int CStageL::Update(void)
 void CStageL::Late_Update(void)
 {
 	CObjMgr::Get_Instance()->Late_Update();
-
-	if (GetAsyncKeyState('R'))
-		CSceneMgr::Get_Instance()->Scene_Change(SC_STAGE);
 }
 
 void CStageL::Render(HDC hDC)

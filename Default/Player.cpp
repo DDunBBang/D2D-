@@ -41,6 +41,13 @@ int CPlayer::Update(void)
 		m_vMinusPos = m_tInfo.vPos;
 		m_bStart = false;
 	}
+
+	if (m_bDead)
+	{
+		m_tInfo.vPos = m_vMinusPos;
+		m_bDead = false;
+	}
+
 	Key_Input();
 
 	D3DXMATRIX	matScale, matRotZ, matTrans;
