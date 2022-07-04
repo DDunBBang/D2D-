@@ -87,14 +87,6 @@ void CStage::Render(HDC hDC)
 	DrawText(hDC, L"STAGE_B", lstrlen(L"STAGE_B"), &m_tRect[2], DT_CENTER);
 	DrawText(hDC, L"STAGE_J", lstrlen(L"STAGE_J"), &m_tRect[3], DT_CENTER);
 
-	TCHAR	szBuff[32] = L"";
-	swprintf_s(szBuff, L"LIFE : %d", m_iScore);
-	TextOut(hDC, WINCX - 200, WINCY - 550, szBuff, lstrlen(szBuff));
-
-	TCHAR	szBuff1[32] = L"";
-	swprintf_s(szBuff1, L"SCORE : %d", m_iScore);
-	TextOut(hDC, WINCX -100, WINCY-550, szBuff1, lstrlen(szBuff1));
-
 	CLineMgr::Get_Instance()->Render(hDC);
 	CObjMgr::Get_Instance()->Render(hDC);
 }
