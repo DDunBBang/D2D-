@@ -26,6 +26,7 @@ void CStageJ::Initialize(void)
 	Creat_Grow();
 	Creat_RotMon();
 	CLineMgr::Get_Instance()->Initialize();
+	CLineMgr::Get_Instance()->Load_File_J();
 }
 
 int CStageJ::Update(void)

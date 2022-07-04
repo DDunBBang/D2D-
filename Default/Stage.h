@@ -16,6 +16,7 @@ public:
 	virtual		void	Release(void);
 
 private:
-	RECT	m_tRect[4];
+	RECT	m_tRect[5];
+	int m_iScore;
 };
 
