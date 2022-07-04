@@ -25,13 +25,7 @@ CStage::~CStage()
 
 void CStage::Initialize(void)
 {
-	//CLineMgr::Get_Instance()->Load_File();
-	CObjMgr::Get_Instance()->Add_Object(OBJ_PLAYER, CAbstractFactory<CPlayer>::Create());
-	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CObstacle>::Create(300.f, 300.f));
-
-	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CLotMonster>::Create(300.f, 300.f));
-
-	//CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CMonster>::Create());
+	CObjMgr::Get_Instance()->Add_Object(OBJ_PLAYER, CAbstractFactory<CPlayer>::Create(400.f, 300.f));
 	CLineMgr::Get_Instance()->Initialize();
 
 	m_tRect[0] = { 110, 150, 210, 250 };
