@@ -72,6 +72,9 @@
     </ClCompile>
     <ClCompile Include="LotMonster.cpp">
       <Filter>01. Obj\04. LotMonster</Filter>
+    <ClCompile Include="LotMonster.cpp" />
+    <ClCompile Include="Goal.cpp">
+      <Filter>01. Obj</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -170,6 +173,9 @@
     </ClInclude>
     <ClInclude Include="LotMonster.h">
       <Filter>01. Obj\04. LotMonster</Filter>
+    <ClInclude Include="LotMonster.h" />
+    <ClInclude Include="Goal.h">
+      <Filter>01. Obj</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

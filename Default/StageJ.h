@@ -18,5 +18,7 @@ public:
 	void	Creat_Grow(void);
 	void	Creat_RotMon(void);
 
+public:
+	void	Load_File();
 };
 
