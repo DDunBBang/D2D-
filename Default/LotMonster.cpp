@@ -33,7 +33,7 @@ void CLotMonster::Initialize(void)
 	{
 		m_vPointRight[i] = { m_vPoint[i % 4].x, m_vPoint[i % 4].y, 0.f };
 	}
-	for (int i = 0; i < m_iCount * 4; ++i)
+	for (int i = 0; i < m_iCount * 4; ++i)		
 	{
 		m_vPointBottom[i] = { m_vPoint[i % 4].x, m_vPoint[i % 4].y, 0.f };
 	}

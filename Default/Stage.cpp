@@ -14,6 +14,7 @@
 #include "LotMonster.h"
 
 CStage::CStage()
+	:m_iScore(0)
 {
 }
 
@@ -26,11 +27,8 @@ CStage::~CStage()
 void CStage::Initialize(void)
 {
 	//CLineMgr::Get_Instance()->Load_File();
-	CObjMgr::Get_Instance()->Add_Object(OBJ_PLAYER, CAbstractFactory<CPlayer>::Create());
-	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CObstacle>::Create(300.f, 300.f));
-
-	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CLotMonster>::Create(300.f, 300.f));
-
+	CObjMgr::Get_Instance()->Add_Object(OBJ_PLAYER, CAbstractFactory<CPlayer>::Create(300.f, 300.f));
+	
 	//CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CMonster>::Create());
 	CLineMgr::Get_Instance()->Initialize();
 
@@ -38,6 +36,7 @@ void CStage::Initialize(void)
 	m_tRect[1] = { 270, 150, 370, 250 };
 	m_tRect[2] = { 430, 150, 530, 250 };
 	m_tRect[3] = { 590, 150, 690, 250 };
+	m_tRect[4] = { 500,150,550,650 };
 }
 
 int CStage::Update(void)
@@ -87,6 +86,14 @@ void CStage::Render(HDC hDC)
 	DrawText(hDC, L"STAGE_S", lstrlen(L"STAGE_S"), &m_tRect[1], DT_CENTER);
 	DrawText(hDC, L"STAGE_B", lstrlen(L"STAGE_B"), &m_tRect[2], DT_CENTER);
 	DrawText(hDC, L"STAGE_J", lstrlen(L"STAGE_J"), &m_tRect[3], DT_CENTER);
+
+	TCHAR	szBuff[32] = L"";
+	swprintf_s(szBuff, L"LIFE : %d", m_iScore);
+	TextOut(hDC, WINCX - 200, WINCY - 550, szBuff, lstrlen(szBuff));
+
+	TCHAR	szBuff1[32] = L"";
+	swprintf_s(szBuff1, L"SCORE : %d", m_iScore);
+	TextOut(hDC, WINCX -100, WINCY-550, szBuff1, lstrlen(szBuff1));
 
 	CLineMgr::Get_Instance()->Render(hDC);
 	CObjMgr::Get_Instance()->Render(hDC);

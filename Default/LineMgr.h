@@ -19,6 +19,8 @@ public:
 	void		Save_File(void);
 	void		Load_File(void);
 
+	void		Load_File_B(void);
+
 	list<CLine*>* Get_LineList() { return &m_LineList; }
 
 public:

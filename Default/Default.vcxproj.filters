@@ -268,6 +268,9 @@
     <Filter Include="01. Obj\03. Obstacle\02. Monster\Grow\LotMonster">
       <UniqueIdentifier>{eae446c1-00da-4de4-a840-38b589ccf8de}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. Obj\03. Obstacle\02. Monster\Diagonal">
+      <UniqueIdentifier>{0235a529-85e9-4464-9ed1-c485ff44e0c0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Default.rc">

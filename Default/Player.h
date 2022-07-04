@@ -25,4 +25,6 @@ private:
 	D3DXVECTOR3		m_vPosin;
 	
 	D3DXVECTOR3		m_vFront;
+
+	int m_iLife;
 };
