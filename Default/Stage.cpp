@@ -25,6 +25,7 @@ CStage::~CStage()
 
 void CStage::Initialize(void)
 {
+
 	CObjMgr::Get_Instance()->Add_Object(OBJ_PLAYER, CAbstractFactory<CPlayer>::Create(400.f, 300.f));
 	CLineMgr::Get_Instance()->Initialize();
 
