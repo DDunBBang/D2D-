@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "Obstacle.h"
 #include "Grow.h"
+#include "LotMonster.h"
 
 
 CStageS::CStageS()
@@ -65,4 +66,7 @@ void CStageS::Create_Obstacle()
 	dynamic_cast<CObstacle*>(Obj2)->Set_AngleSpeedSet(5.f);
 	dynamic_cast<CObstacle*>(Obj2)->Set_Distance(100.f);
 	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, Obj2);
+
+	CObj*	Obj3 = CAbstractFactory<CLotMonster>::Create(700.f, 500.f);
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, Obj3);
 }
