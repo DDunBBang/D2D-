@@ -17,11 +17,10 @@ CStageJ::~CStageJ()
 }
 
 void CStageJ::Initialize(void)
-{
-	CObjMgr::Get_Instance()->Add_Object(OBJ_PLAYER, CAbstractFactory<CPlayer>::Create());
-	
-	CObjMgr::Get_Instance()->Add_Object(OBJ_OBSTACLE, CAbstractFactory<CObstacle>::Create(100.f, 100.f)); 
-	//dynamic_cast<CObstacle*>(m_Obstacle)->Set_SpeedSet(5.f);
+{	
+	CObj* pObj1 = CAbstractFactory<CObstacle>::Create(100.f, 100.f);
+	//dynamic_cast<CObstacle*>(pObj1)->Set_State(CObstacle::RECT);
+	//dynamic_cast<CObstacle*>(pObj1)->Set_SpeedSet(4.f);
 	
 	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CObstacle>::Create(100.f, 200.f));
 	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CObstacle>::Create(100.f, 300.f));
