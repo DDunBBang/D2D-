@@ -73,6 +73,9 @@
     <ClCompile Include="LotMonster.cpp">
       <Filter>01. Obj\03. Obstacle\02. Monster\Grow\LotMonster</Filter>
     </ClCompile>
+    <ClCompile Include="Score.cpp">
+      <Filter>01. Obj\Score</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainGame.h">
@@ -170,6 +173,9 @@
     </ClInclude>
     <ClInclude Include="LotMonster.h">
       <Filter>01. Obj\03. Obstacle\02. Monster\Grow\LotMonster</Filter>
+    </ClInclude>
+    <ClInclude Include="Score.h">
+      <Filter>01. Obj\Score</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -270,6 +276,9 @@
     </Filter>
     <Filter Include="01. Obj\03. Obstacle\02. Monster\Diagonal">
       <UniqueIdentifier>{0235a529-85e9-4464-9ed1-c485ff44e0c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\Score">
+      <UniqueIdentifier>{a60da44f-95f5-42b0-a26c-aff6baed0107}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

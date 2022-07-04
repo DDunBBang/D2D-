@@ -19,6 +19,8 @@ public:
 	void		Set_PosX(float _fX) { m_tInfo.vPos.x += _fX; }
 	void		Set_PosY(float _fY) { m_tInfo.vPos.y += _fY; }
 
+	void		Set_Score(int _iScore) { m_iScore = _iScore; }
+
 	void		Set_Dead(void) { m_bDead = true; }
 
 	const INFO&		Get_Info(void)const { return m_tInfo; }
@@ -44,6 +46,8 @@ protected:
 	D3DXVECTOR3		m_vPoint[4];
 	D3DXVECTOR3		m_vOriginPoint[4];
 	D3DXVECTOR3		m_vMinusPos;
+
+	int				m_iScore;
 
 	bool			m_bDead;
 	bool			m_bStart;
