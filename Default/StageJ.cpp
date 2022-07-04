@@ -7,6 +7,7 @@
 #include "Obstacle.h"
 #include "LotMonster.h"
 #include "Grow.h"
+#include "Goal.h"
 
 CStageJ::CStageJ()
 {
@@ -21,6 +22,7 @@ void CStageJ::Initialize(void)
 {	
 	Load_File();
 	CObjMgr::Get_Instance()->Add_Object(OBJ_PLAYER, CAbstractFactory<CPlayer>::Create(50.f, 100.f));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_GOAL, CAbstractFactory<CGoal>::Create(700.f, 100.f));
 	
 	Creat_Obstacle();
 	Creat_Grow();
