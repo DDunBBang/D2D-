@@ -71,6 +71,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="LotMonster.cpp" />
+    <ClCompile Include="Goal.cpp">
+      <Filter>01. Obj</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainGame.h">
@@ -167,6 +170,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="LotMonster.h" />
+    <ClInclude Include="Goal.h">
+      <Filter>01. Obj</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Default.ico">

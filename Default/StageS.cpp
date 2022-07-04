@@ -208,9 +208,4 @@ void CStageS::Load_File()
 
 	// 3. 개방한 파일 소멸하기
 	CloseHandle(hFile);
-
-
-#ifdef _DEBUG
-	MessageBox(g_hWnd, L"Load 성공", L"성공", MB_OK);
-#endif // _DEBUG
 }

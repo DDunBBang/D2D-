@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "Obstacle.h"
 #include "LotMonster.h"
+# include "Goal.h"
 
 CStageL::CStageL()
 {
@@ -22,6 +23,7 @@ void CStageL::Initialize(void)
 	Load_File();
 	CLineMgr::Get_Instance()->Initialize();
 	CObjMgr::Get_Instance()->Add_Object(OBJ_PLAYER, CAbstractFactory<CPlayer>::Create(100.f, 100.f));
+	CObjMgr::Get_Instance()->Add_Object(OBJ_GOAL, CAbstractFactory<CGoal>::Create(500.f, 290.f));
 	Create_Grow();
 	Create_Obstacle();
 	Create_Rot();
@@ -54,7 +56,7 @@ void CStageL::Release(void)
 void CStageL::Load_File()
 {
 	// 1. 파일 개방
-	HANDLE	hFile = CreateFile(L"../Data/StageL.dat",	// 파일 경로와 이름을 명시하는 매개변수
+	HANDLE	hFile = CreateFile(L"../Data/LineL.dat",	// 파일 경로와 이름을 명시하는 매개변수
 		GENERIC_READ,		// 모드 지정, GENERIC_WRITE(쓰기), GENERIC_READ(읽기)
 		NULL,				// 공유 방식, 파일이 열려 있는 상태에서 다른 프로세스가 오픈할 때 허용을 할 것인가, NULL로 지정 시 공유하지 않음
 		NULL,				// 보안 속성, NULL인 경우 기본 값으로 설정
@@ -87,11 +89,6 @@ void CStageL::Load_File()
 
 	// 3. 개방한 파일 소멸하기
 	CloseHandle(hFile);
-
-
-#ifdef _DEBUG
-	MessageBox(g_hWnd, L"Load 성공", L"성공", MB_OK);
-#endif // _DEBUG
 }
 
 void CStageL::Create_Obstacle()
