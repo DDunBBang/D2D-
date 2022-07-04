@@ -16,5 +16,9 @@ public:
 
 public:
 	void Load_File();
+public:
+	void	Create_Obstacle();
+	void	Create_Rot();
+	void	Create_Grow();
 };
 

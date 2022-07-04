@@ -11,10 +11,10 @@
       <Filter>01. Obj\01. Bullet</Filter>
     </ClCompile>
     <ClCompile Include="Monster.cpp">
-      <Filter>01. Obj\03. Obstacle\02. Monster</Filter>
+      <Filter>01. Obj\02. Monster</Filter>
     </ClCompile>
     <ClCompile Include="Grow.cpp">
-      <Filter>01. Obj\03. Obstacle\02. Monster\Grow</Filter>
+      <Filter>01. Obj\02. Monster\Grow</Filter>
     </ClCompile>
     <ClCompile Include="BmpMgr.cpp">
       <Filter>98. Design\BmpMgr</Filter>
@@ -70,11 +70,9 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="LotMonster.cpp">
-      <Filter>01. Obj\03. Obstacle\02. Monster\Grow\LotMonster</Filter>
-    </ClCompile>
-    <ClCompile Include="Score.cpp">
-      <Filter>01. Obj\Score</Filter>
+    <ClCompile Include="LotMonster.cpp" />
+    <ClCompile Include="Goal.cpp">
+      <Filter>01. Obj</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -88,10 +86,10 @@
       <Filter>01. Obj\01. Bullet</Filter>
     </ClInclude>
     <ClInclude Include="Monster.h">
-      <Filter>01. Obj\03. Obstacle\02. Monster</Filter>
+      <Filter>01. Obj\02. Monster</Filter>
     </ClInclude>
     <ClInclude Include="Grow.h">
-      <Filter>01. Obj\03. Obstacle\02. Monster\Grow</Filter>
+      <Filter>01. Obj\02. Monster\Grow</Filter>
     </ClInclude>
     <ClInclude Include="Function.h">
       <Filter>99. Header</Filter>
@@ -171,11 +169,9 @@
     <ClInclude Include="targetver.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="LotMonster.h">
-      <Filter>01. Obj\03. Obstacle\02. Monster\Grow\LotMonster</Filter>
-    </ClInclude>
-    <ClInclude Include="Score.h">
-      <Filter>01. Obj\Score</Filter>
+    <ClInclude Include="LotMonster.h" />
+    <ClInclude Include="Goal.h">
+      <Filter>01. Obj</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -201,6 +197,12 @@
     </Filter>
     <Filter Include="01. Obj\01. Bullet">
       <UniqueIdentifier>{04500e03-5135-49e4-84ba-68354c3a2b25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\02. Monster">
+      <UniqueIdentifier>{81e2e9bb-d0d1-4058-93db-c8c73dbe82e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\02. Monster\Grow">
+      <UniqueIdentifier>{ea745c1f-cc1b-4e9b-8cf0-aba7ee965c19}</UniqueIdentifier>
     </Filter>
     <Filter Include="99. Header">
       <UniqueIdentifier>{1054e13f-e788-49fd-ba0a-9969d187f39b}</UniqueIdentifier>
@@ -264,21 +266,6 @@
     </Filter>
     <Filter Include="헤더 파일">
       <UniqueIdentifier>{8da1b9ac-9c9e-43a3-9587-ed4acf2d6f35}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="01. Obj\03. Obstacle\02. Monster">
-      <UniqueIdentifier>{81e2e9bb-d0d1-4058-93db-c8c73dbe82e4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="01. Obj\03. Obstacle\02. Monster\Grow">
-      <UniqueIdentifier>{ea745c1f-cc1b-4e9b-8cf0-aba7ee965c19}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="01. Obj\03. Obstacle\02. Monster\Grow\LotMonster">
-      <UniqueIdentifier>{eae446c1-00da-4de4-a840-38b589ccf8de}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="01. Obj\03. Obstacle\02. Monster\Diagonal">
-      <UniqueIdentifier>{0235a529-85e9-4464-9ed1-c485ff44e0c0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="01. Obj\Score">
-      <UniqueIdentifier>{a60da44f-95f5-42b0-a26c-aff6baed0107}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

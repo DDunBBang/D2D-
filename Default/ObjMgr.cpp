@@ -3,6 +3,7 @@
 #include "Obj.h"
 #include "CollisionMgr.h"
 #include "LineMgr.h"
+#include "SceneMgr.h"
 
 CObjMgr*		CObjMgr::m_pInstance = nullptr;
 
@@ -36,7 +37,11 @@ int CObjMgr::Update(void)
 {
 	int	iEvent = 0;
 
-	CCollisionMgr::Collision_Line(CObjMgr::Get_ObjList(OBJ_PLAYER), CLineMgr::Get_Instance()->Get_LineList());
+	CCollisionMgr::Collision_Line(Get_ObjList(OBJ_PLAYER), CLineMgr::Get_Instance()->Get_LineList());
+	if (!m_ObjList[OBJ_GOAL].empty() && CCollisionMgr::Collision_Goal(Get_Player(), m_ObjList[OBJ_GOAL].front()))
+	{
+		CSceneMgr::Get_Instance()->Scene_Change(SC_STAGE);
+	}
 
 	for (size_t i = 0; i < OBJ_END; ++i)
 	{
@@ -70,6 +75,8 @@ void CObjMgr::Late_Update(void)
 				break;
 		}
 	}
+
+	CCollisionMgr::Collision_Sphere(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_MONSTER]);
 }
 
 void CObjMgr::Render(HDC hDC)

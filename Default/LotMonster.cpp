@@ -18,6 +18,7 @@ void CLotMonster::Initialize(void)
 	m_tInfo.vDir = { 1.f, 0.f, 0.f };
 	m_tInfo.vLook = { 1.f, 0.f, 0.f };
 
+	m_fDistance = 30.f;
 	m_iCount = 10;
 
 	m_vPoint[0] = { m_tInfo.vPos.x - 10.f , m_tInfo.vPos.y - 10.f, 0.f };
@@ -155,7 +156,7 @@ void CLotMonster::Release(void)
 
 void CLotMonster::Create_Rect()
 {
-	int iDistance = 30;
+	int iDistance = m_fDistance;
 	//À§
 	for (int i = 0; i < m_iCount * 4; ++i)
 	{
@@ -165,12 +166,12 @@ void CLotMonster::Create_Rect()
 
 		if ((i + 1) % 4 == 0)
 		{
-			iDistance += 30;
+			iDistance += m_fDistance;
 		}
 
 		if (i == m_iCount * 4 - 1)
 		{
-			iDistance = 30;
+			iDistance = m_fDistance;
 		}
 		D3DXVec3TransformCoord(&m_vPointTop[i], &m_vPointTop[i], &m_tInfo.matWorld);
 	}
@@ -184,12 +185,12 @@ void CLotMonster::Create_Rect()
 
 		if ((i + 1) % 4 == 0)
 		{
-			iDistance += 30;
+			iDistance += m_fDistance;
 		}
 
 		if (i == m_iCount * 4 - 1)
 		{
-			iDistance = 30;
+			iDistance = m_fDistance;
 		}
 		D3DXVec3TransformCoord(&m_vPointRight[i], &m_vPointRight[i], &m_tInfo.matWorld);
 	}
@@ -203,12 +204,12 @@ void CLotMonster::Create_Rect()
 
 		if ((i + 1) % 4 == 0)
 		{
-			iDistance += 30;
+			iDistance += m_fDistance;
 		}
 
 		if (i == m_iCount * 4 - 1)
 		{
-			iDistance = 30;
+			iDistance = m_fDistance;
 		}
 		D3DXVec3TransformCoord(&m_vPointBottom[i], &m_vPointBottom[i], &m_tInfo.matWorld);
 	}
@@ -222,12 +223,12 @@ void CLotMonster::Create_Rect()
 
 		if ((i + 1) % 4 == 0)
 		{
-			iDistance += 30;
+			iDistance += m_fDistance;
 		}
 
 		if (i == m_iCount * 4 - 1)
 		{
-			iDistance = 30;
+			iDistance = m_fDistance;
 		}
 		D3DXVec3TransformCoord(&m_vPointLeft[i], &m_vPointLeft[i], &m_tInfo.matWorld);
 	}
