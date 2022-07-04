@@ -17,6 +17,7 @@ public:
 	void	Set_AngleSpeed(float _fSpeed)	{ m_fAngleSpeed = _fSpeed; }
 	void	Set_Count(int _iCount)		{ m_iCount = _iCount; }
 	void	Set_Pos(D3DXVECTOR3 _Pos)	{ m_tInfo.vPos = _Pos; }
+	void	Set_Distance(float _fDistance) { m_fDistance = _fDistance; }
 
 	void	Create_Rect();
 
@@ -37,5 +38,6 @@ private:
 
 	int			m_iCount;
 	float		m_fAngleSpeed;
+	float		m_fDistance;
 };
 
