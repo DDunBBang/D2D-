@@ -14,8 +14,13 @@ public:
 	virtual void Render(HDC hDC) override;
 	virtual void Release(void) override;
 
+public:
+	void Set_SizeMax(int _iSize) { m_fSizeMax = _iSize; }
+
 private:
 	bool	m_bGrow;
+
+	int		m_fSizeMax;
 
 	float	m_fSize;
 };

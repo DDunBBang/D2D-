@@ -3,7 +3,7 @@
 
 
 CObstacle::CObstacle() : m_fAngleSpeed(0.f), m_fDistance(0.f) , m_fSpeedSet(0.f), m_fAngleSpeedSet(0.f)
-, m_eState(END), m_bStart(true)
+, m_eState(END)
 {
 }
 

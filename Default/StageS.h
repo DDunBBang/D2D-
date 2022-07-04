@@ -16,5 +16,7 @@ public:
 
 public:
 	void	Create_Obstacle();
+	void	Create_Rot();
+	void	Create_Grow();
 };
 
