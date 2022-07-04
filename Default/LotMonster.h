@@ -23,9 +23,6 @@ public:
 private:
 	LINEPOINT	m_tLinePoint[DIR_END][DIR_END];
 
-	D3DXVECTOR3		m_vPoint[4];
-	D3DXVECTOR3		m_vOriginPoint[4];
-
 	D3DXVECTOR3		m_vPointTop[40];
 	D3DXVECTOR3		m_vOriginPointTop[40];
 
@@ -37,10 +34,6 @@ private:
 
 	D3DXVECTOR3		m_vPointLeft[40];
 	D3DXVECTOR3		m_vOriginPointLeft[40];
-
-	D3DXVECTOR3		m_vMinusPos;
-
-	bool		m_bStart;
 
 	int			m_iCount;
 	float		m_fAngleSpeed;

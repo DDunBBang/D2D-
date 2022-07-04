@@ -16,7 +16,7 @@ CPlayer::~CPlayer()
 
 void CPlayer::Initialize(void)
 {
-	m_tInfo.vPos = { 400.f, 300.f, 0.f };
+	//m_tInfo.vPos = { 400.f, 300.f, 0.f };
 	m_tInfo.vLook = { 1.f, 0.f, 0.f };
 
 	m_fSpeed = 4.f;
@@ -36,6 +36,11 @@ void CPlayer::Initialize(void)
 
 int CPlayer::Update(void)
 {
+	if (m_bStart)
+	{
+		m_vMinusPos = m_tInfo.vPos;
+		m_bStart = false;
+	}
 	Key_Input();
 
 	D3DXMATRIX	matScale, matRotZ, matTrans;
@@ -49,7 +54,7 @@ int CPlayer::Update(void)
 	for (int i = 0; i < 4; ++i)
 	{
 		m_vPoint[i] = m_vOriginPoint[i];
-		m_vPoint[i] -= {400.f, 300.f, 0.f };
+		m_vPoint[i] -= m_vMinusPos;
 
 		D3DXVec3TransformCoord(&m_vPoint[i], &m_vPoint[i], &m_tInfo.matWorld);
 	}

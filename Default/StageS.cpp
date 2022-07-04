@@ -20,9 +20,12 @@ CStageS::~CStageS()
 
 void CStageS::Initialize(void)
 {
-	CObjMgr::Get_Instance()->Add_Object(OBJ_PLAYER, CAbstractFactory<CPlayer>::Create());
+	CLineMgr::Get_Instance()->Load_File();
+	CObjMgr::Get_Instance()->Add_Object(OBJ_PLAYER, CAbstractFactory<CPlayer>::Create(45.f, 45.f));
 
 	Create_Obstacle();
+	Create_Rot();
+	Create_Grow();
 
 	CLineMgr::Get_Instance()->Initialize();
 }
@@ -53,20 +56,118 @@ void CStageS::Release(void)
 
 void CStageS::Create_Obstacle()
 {
-	CObj*	Obj = CAbstractFactory<CObstacle>::Create(400.f,200.f);
-	dynamic_cast<CObstacle*>(Obj)->Set_State(CObstacle::RECT);
-	dynamic_cast<CObstacle*>(Obj)->Set_SpeedSet(2.f);
-	dynamic_cast<CObstacle*>(Obj)->Set_AngleSpeedSet(5.f);
-	dynamic_cast<CObstacle*>(Obj)->Set_Distance(150.f);
-	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, Obj);
+	CObj*	pObstacle = CAbstractFactory<CObstacle>::Create(10.f,150.f);
+	dynamic_cast<CObstacle*>(pObstacle)->Set_State(CObstacle::HORIZONTAL);
+	dynamic_cast<CObstacle*>(pObstacle)->Set_SpeedSet(2.f);
+	dynamic_cast<CObstacle*>(pObstacle)->Set_AngleSpeedSet(5.f);
+	dynamic_cast<CObstacle*>(pObstacle)->Set_Distance(100.f);
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, pObstacle);
 
-	CObj*	Obj2 = CAbstractFactory<CObstacle>::Create(200.f,300.f);
-	dynamic_cast<CObstacle*>(Obj2)->Set_State(CObstacle::HORIZONTAL);
-	dynamic_cast<CObstacle*>(Obj2)->Set_SpeedSet(2.f);
-	dynamic_cast<CObstacle*>(Obj2)->Set_AngleSpeedSet(5.f);
-	dynamic_cast<CObstacle*>(Obj2)->Set_Distance(100.f);
-	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, Obj2);
+	CObj*	pObstacle2 = CAbstractFactory<CObstacle>::Create(10.f, 225.f);
+	dynamic_cast<CObstacle*>(pObstacle2)->Set_State(CObstacle::HORIZONTAL);
+	dynamic_cast<CObstacle*>(pObstacle2)->Set_SpeedSet(4.f);
+	dynamic_cast<CObstacle*>(pObstacle2)->Set_AngleSpeedSet(15.f);
+	dynamic_cast<CObstacle*>(pObstacle2)->Set_Distance(100.f);
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, pObstacle2);
 
-	CObj*	Obj3 = CAbstractFactory<CLotMonster>::Create(700.f, 500.f);
-	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, Obj3);
+	CObj*	pObstacle3 = CAbstractFactory<CObstacle>::Create(10.f,300.f);
+	dynamic_cast<CObstacle*>(pObstacle3)->Set_State(CObstacle::HORIZONTAL);
+	dynamic_cast<CObstacle*>(pObstacle3)->Set_SpeedSet(3.f);
+	dynamic_cast<CObstacle*>(pObstacle3)->Set_AngleSpeedSet(6.f);
+	dynamic_cast<CObstacle*>(pObstacle3)->Set_Distance(100.f);
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, pObstacle3);
+
+	CObj*	pObstacle4 = CAbstractFactory<CObstacle>::Create(10.f, 375.f);
+	dynamic_cast<CObstacle*>(pObstacle4)->Set_State(CObstacle::HORIZONTAL);
+	dynamic_cast<CObstacle*>(pObstacle4)->Set_SpeedSet(6.f);
+	dynamic_cast<CObstacle*>(pObstacle4)->Set_AngleSpeedSet(18.f);
+	dynamic_cast<CObstacle*>(pObstacle4)->Set_Distance(100.f);
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, pObstacle4);
+
+	CObj*	pObstacle5 = CAbstractFactory<CObstacle>::Create(40.f, 470.f);
+	dynamic_cast<CObstacle*>(pObstacle5)->Set_State(CObstacle::RECT);
+	dynamic_cast<CObstacle*>(pObstacle5)->Set_SpeedSet(2.f);
+	dynamic_cast<CObstacle*>(pObstacle5)->Set_AngleSpeedSet(5.f);
+	dynamic_cast<CObstacle*>(pObstacle5)->Set_Distance(80.f);
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, pObstacle5);
+
+	CObj*	pObstacle6 = CAbstractFactory<CObstacle>::Create(40.f, 470.f);
+	dynamic_cast<CObstacle*>(pObstacle6)->Set_State(CObstacle::RECT);
+	dynamic_cast<CObstacle*>(pObstacle6)->Set_SpeedSet(4.f);
+	dynamic_cast<CObstacle*>(pObstacle6)->Set_AngleSpeedSet(10.f);
+	dynamic_cast<CObstacle*>(pObstacle6)->Set_Distance(80.f);
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, pObstacle6);
+
+	CObj*	pObstacle7 = CAbstractFactory<CObstacle>::Create(252.f, 15.f);
+	dynamic_cast<CObstacle*>(pObstacle7)->Set_State(CObstacle::VERTICAL);
+	dynamic_cast<CObstacle*>(pObstacle7)->Set_SpeedSet(3.f);
+	dynamic_cast<CObstacle*>(pObstacle7)->Set_AngleSpeedSet(6.f);
+	dynamic_cast<CObstacle*>(pObstacle7)->Set_Distance(80.f);
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, pObstacle7);
+
+	CObj*	pObstacle8 = CAbstractFactory<CObstacle>::Create(200.f, 70.f);
+	dynamic_cast<CObstacle*>(pObstacle8)->Set_State(CObstacle::HORIZONTAL);
+	dynamic_cast<CObstacle*>(pObstacle8)->Set_SpeedSet(3.f);
+	dynamic_cast<CObstacle*>(pObstacle8)->Set_AngleSpeedSet(6.f);
+	dynamic_cast<CObstacle*>(pObstacle8)->Set_Distance(100.f);
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, pObstacle8);
+
+	CObj*	pObstacle9 = CAbstractFactory<CObstacle>::Create(400.f, 498.f);
+	dynamic_cast<CObstacle*>(pObstacle9)->Set_State(CObstacle::HORIZONTAL);
+	dynamic_cast<CObstacle*>(pObstacle9)->Set_SpeedSet(2.f);
+	dynamic_cast<CObstacle*>(pObstacle9)->Set_AngleSpeedSet(6.f);
+	dynamic_cast<CObstacle*>(pObstacle9)->Set_Distance(80.f);
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, pObstacle9);
+
+	CObj*	pObstacle10 = CAbstractFactory<CObstacle>::Create(400.f, 498.f);
+	dynamic_cast<CObstacle*>(pObstacle10)->Set_State(CObstacle::VERTICAL);
+	dynamic_cast<CObstacle*>(pObstacle10)->Set_SpeedSet(2.f);
+	dynamic_cast<CObstacle*>(pObstacle10)->Set_AngleSpeedSet(6.f);
+	dynamic_cast<CObstacle*>(pObstacle10)->Set_Distance(80.f);
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, pObstacle10);
+
+	CObj*	pObstacle11 = CAbstractFactory<CObstacle>::Create(699.f, 499.f);
+	dynamic_cast<CObstacle*>(pObstacle11)->Set_State(CObstacle::RECT);
+	dynamic_cast<CObstacle*>(pObstacle11)->Set_SpeedSet(2.f);
+	dynamic_cast<CObstacle*>(pObstacle11)->Set_AngleSpeedSet(5.f);
+	dynamic_cast<CObstacle*>(pObstacle11)->Set_Distance(50.f);
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, pObstacle11);
+}
+
+void CStageS::Create_Rot()
+{
+	CObj*	pRot = CAbstractFactory<CLotMonster>::Create(250.f, 200.f);
+	dynamic_cast<CLotMonster*>(pRot)->Set_Count(4);
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, pRot);
+
+	CObj*	pRot2 = CAbstractFactory<CLotMonster>::Create(515.f, 200.f);
+	dynamic_cast<CLotMonster*>(pRot2)->Set_Count(4);
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, pRot2);
+
+	CObj*	pRot3 = CAbstractFactory<CLotMonster>::Create(250.f, 400.f);
+	dynamic_cast<CLotMonster*>(pRot3)->Set_Count(4);
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, pRot3);
+
+	CObj*	pRot4 = CAbstractFactory<CLotMonster>::Create(515.f, 400.f);
+	dynamic_cast<CLotMonster*>(pRot4)->Set_Count(4);
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, pRot4);
+}
+
+void CStageS::Create_Grow()
+{
+	CObj*	pGrow = CAbstractFactory<CGrow>::Create(512.f,62.f);
+	dynamic_cast<CGrow*>(pGrow)->Set_SizeMax(5);
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, pGrow);
+
+	CObj*	pGrow2 = CAbstractFactory<CGrow>::Create(726.f, 400.f);
+	dynamic_cast<CGrow*>(pGrow2)->Set_SizeMax(4);
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, pGrow2);
+
+	CObj*	pGrow3 = CAbstractFactory<CGrow>::Create(726.f, 280.f);
+	dynamic_cast<CGrow*>(pGrow3)->Set_SizeMax(3);
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, pGrow3);
+
+	CObj*	pGrow4 = CAbstractFactory<CGrow>::Create(726.f, 160.f);
+	dynamic_cast<CGrow*>(pGrow4)->Set_SizeMax(4);
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, pGrow4);
 }
