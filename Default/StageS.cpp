@@ -22,6 +22,7 @@ void CStageS::Initialize(void)
 {
 	CLineMgr::Get_Instance()->Load_File();
 	CObjMgr::Get_Instance()->Add_Object(OBJ_PLAYER, CAbstractFactory<CPlayer>::Create(45.f, 45.f));
+	CLineMgr::Get_Instance()->Load_File_S();
 
 	Create_Obstacle();
 	Create_Rot();

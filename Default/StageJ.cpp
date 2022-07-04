@@ -18,6 +18,7 @@ void CStageJ::Initialize(void)
 {
 	CObjMgr::Get_Instance()->Add_Object(OBJ_PLAYER, CAbstractFactory<CPlayer>::Create());
 	CLineMgr::Get_Instance()->Initialize();
+	CLineMgr::Get_Instance()->Load_File_J();
 }
 
 int CStageJ::Update(void)
