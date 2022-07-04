@@ -14,5 +14,9 @@ public:
 	virtual		void	Render(HDC hDC);
 	virtual		void	Release(void);
 
+	void	Creat_Obstacle(void);
+	void	Creat_Grow(void);
+	void	Creat_RotMon(void);
+
 };
 

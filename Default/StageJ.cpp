@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "Obstacle.h"
 #include "LotMonster.h"
+#include "Grow.h"
 
 CStageJ::CStageJ()
 {
@@ -18,14 +19,12 @@ CStageJ::~CStageJ()
 
 void CStageJ::Initialize(void)
 {	
-	CObj* pObj1 = CAbstractFactory<CObstacle>::Create(100.f, 100.f);
-	//dynamic_cast<CObstacle*>(pObj1)->Set_State(CObstacle::RECT);
-	//dynamic_cast<CObstacle*>(pObj1)->Set_SpeedSet(4.f);
+	CObjMgr::Get_Instance()->Add_Object(OBJ_PLAYER, CAbstractFactory<CPlayer>::Create(100.f, 100.f));
 	
-	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CObstacle>::Create(100.f, 200.f));
-	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CObstacle>::Create(100.f, 300.f));
+	Creat_Obstacle();
+	Creat_Grow();
+	Creat_RotMon();
 
-	//CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CLotMonster>::Create(300.f, 300.f));
 	CLineMgr::Get_Instance()->Initialize();
 }
 
@@ -51,4 +50,36 @@ void CStageJ::Render(HDC hDC)
 void CStageJ::Release(void)
 {
 	CLineMgr::Get_Instance()->Destroy_Instance();
+}
+
+void CStageJ::Creat_Obstacle(void)
+{
+	CObj* pObj1 = CAbstractFactory<CObstacle>::Create(100.f, 100.f);
+	dynamic_cast<CObstacle*>(pObj1)->Set_State(CObstacle::RECT);
+	dynamic_cast<CObstacle*>(pObj1)->Set_SpeedSet(4.5f);
+	dynamic_cast<CObstacle*>(pObj1)->Set_AngleSpeedSet(5.f);
+	CObjMgr::Get_Instance()->Add_Object(OBJ_OBSTACLE, pObj1);
+
+	CObj* pObj2 = CAbstractFactory<CObstacle>::Create(100.f, 200.f);
+	dynamic_cast<CObstacle*>(pObj2)->Set_State(CObstacle::RECT);
+	dynamic_cast<CObstacle*>(pObj2)->Set_SpeedSet(4.5f);
+	dynamic_cast<CObstacle*>(pObj2)->Set_AngleSpeedSet(5.f);
+	CObjMgr::Get_Instance()->Add_Object(OBJ_OBSTACLE, pObj2);
+
+	CObj* pObj3 = CAbstractFactory<CObstacle>::Create(100.f, 300.f);
+	dynamic_cast<CObstacle*>(pObj3)->Set_State(CObstacle::RECT);
+	dynamic_cast<CObstacle*>(pObj3)->Set_SpeedSet(4.5f);
+	dynamic_cast<CObstacle*>(pObj3)->Set_AngleSpeedSet(5.f);
+	CObjMgr::Get_Instance()->Add_Object(OBJ_OBSTACLE, pObj3);
+
+}
+
+void CStageJ::Creat_Grow(void)
+{
+	CObj* pObj1 = CAbstractFactory<CGrow>::Create(125.f, 125.f);
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, pObj1);
+}
+
+void CStageJ::Creat_RotMon(void)
+{
 }
